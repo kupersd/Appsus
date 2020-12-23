@@ -1,7 +1,7 @@
 Stage #1
 =========
-- Render all components
-- Create 4 notes with demo data
-- Render each note type
+V Render all components
+V Create 4 notes with demo data
+V Render each note type
 - Get notes from service
 - Add note from input

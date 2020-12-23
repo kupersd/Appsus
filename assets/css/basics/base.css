@@ -31,7 +31,9 @@ a {
 a:hover {
     text-decoration: underline;
 }
-
+img {
+    width: 100%;
+}
 nav .active {
     color: rgb(187, 154, 223);
     text-decoration: underline;

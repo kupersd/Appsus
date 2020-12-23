@@ -12,4 +12,7 @@
 @import './cmps/PetPreview.css';
 
 /* BOOKS */
-@import './apps/books/BooksList.css'
+@import './apps/books/BooksList.css';
+
+/* KEEP */
+@import './apps/keep/NoteList.css';

@@ -1,7 +1,11 @@
+.note-list {
+    flex-wrap: wrap;
+}
+
 .note {
     width: 200px;
-    height: 300px;
-    margin-inline-end: 1rem;
+    height: 250px;
+    margin: 1rem;
 }
 
 .note-text, .note-todos {

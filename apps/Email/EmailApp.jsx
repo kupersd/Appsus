@@ -3,7 +3,7 @@ import { EmailToolbar } from "./cmps/EmailToolbar.jsx";
 import { emailService } from "./services/email-service.js";
 
 const Router = ReactRouterDOM.HashRouter;
-const { Route, Switch } = ReactRouterDOM;
+// const { Route, Switch } = ReactRouterDOM;
 
 // Simple React Component
 export class EmailApp extends React.Component {
@@ -35,13 +35,10 @@ export class EmailApp extends React.Component {
     render() {
         const emailsForDisplay = this.emailsForDisplay;
         return (
-            <Router>
                 <section className="email-app">
                     <EmailToolbar />
                     <EmailList emails={emailsForDisplay} />
-
                 </section>
-            </Router>
         )
     }
 }

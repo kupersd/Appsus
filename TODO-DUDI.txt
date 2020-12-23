@@ -4,6 +4,7 @@ V Render all components
 V Create 4 notes with demo data
 V Render each note type
 V Get notes from service
-- Add note from input
+V Add note from input
+V Delete note
 - Add search/filter
 - Add video note

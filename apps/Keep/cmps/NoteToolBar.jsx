@@ -1,3 +1,3 @@
-export function NoteToolBar () {
-    return <h1>ToolBar</h1>
+export function NoteToolBar ({noteId, onDelete}) {
+    return <button onClick={()=>{onDelete(noteId)}}>Delete</button>
 }

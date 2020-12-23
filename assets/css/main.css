@@ -7,9 +7,10 @@
 
 /* Components: */
 @import './cmps/AppHeader.css';
-@import './cmps/PetFilter.css';
-@import './cmps/PetList.css';
-@import './cmps/PetPreview.css';
+
 
 /* BOOKS */
-@import './apps/books/BooksList.css'
+@import './apps/books/BooksList.css';
+
+/* EMAIL */
+@import './apps/email/email-app.css';

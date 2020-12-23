@@ -1,4 +1,6 @@
 import { EmailList } from "./cmps/EmailList.jsx";
+import { EmailToolbar } from "./cmps/EmailToolbar.jsx";
+import { emailService } from "./services/email-service.js";
 
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
@@ -6,22 +8,38 @@ const { Route, Switch } = ReactRouterDOM;
 // Simple React Component
 export class EmailApp extends React.Component {
 
+    state = {
+        emails: [],
+        filterBy: {
+            isRead: null,
+            mailText: ''
+        }
+    }
+
+    componentDidMount() {
+        console.log('Email APP Loaded')
+        this.loadEmails();
+    }
+
+    loadEmails = () => {
+        emailService.query().then(emails => {
+            this.setState({ emails });
+            console.log(emails)
+        });
+    }
+
+    get emailsForDisplay() {
+        return this.state.emails;
+    }
+
     render() {
+        const emailsForDisplay = this.emailsForDisplay;
         return (
             <Router>
-                <section className="app">
-                    <h1>Mail App</h1>
-                    <ul>
-                        <li>Compose</li>
-                        <li>Inbox</li>
-                        <li>Starred</li>
-                        <li>Sent</li>
-                        <li>Drafts</li>
-                    </ul>
-                    <Switch>
-                        <Route path="/email" component={EmailList} />
-                    </Switch>
-                    {/* <footer className="animate__animated animate__jello">coffeerights 2020</footer> */}
+                <section className="email-app">
+                    <EmailToolbar />
+                    <EmailList emails={emailsForDisplay} />
+
                 </section>
             </Router>
         )

@@ -1,0 +1,32 @@
+.email-app {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 10px;
+}
+
+.email-toolbar {
+    background-color: aliceblue;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.email-toolbar li {
+    margin: 5px;
+    cursor: pointer;
+}
+.emails-list {
+    background-color: #fff;
+}
+
+.email-preview{
+    border-bottom: 1px solid #333;
+}
+
+.email-preview h4 {
+    margin: 0 1em 0 0;
+    font-size: 1rem;
+}
+
+.email-preview p {
+    font-size: 0.9rem;
+}

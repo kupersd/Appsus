@@ -5,7 +5,7 @@ V Get mails from service
 V Render mails list
 V Compose. Add mail to data.
 V Emails basic layout
-- Add filter (check who sent/receive => inbox/sent)
 V Delete email
 V Render open email
+- Add filter (check who sent/receive => inbox/sent) READ/UNREAD
 - Add more attribues to the email

@@ -3,13 +3,13 @@ export class EmailToolbar extends React.Component {
     render() {
         return (
             <section className="email-toolbar">
-                <button>Compose</button>
+                <button onClick={this.props.onCompose}>Compose</button>
                 <ul className="clean-list">
-                    <li>ALL</li>
-                    <li>Inbox</li>
-                    <li>Starred</li>
-                    <li>Sent</li>
-                    <li>Drafts</li>
+                    <li onClick={this.props.onAll}>ALL</li>
+                    <li className="disabled">Inbox</li>
+                    <li onClick={this.props.onUnread}>Unread</li>
+                    <li className="disabled">Sent</li>
+                    <li className="disabled">Drafts</li>
                 </ul>
             </section>
         )

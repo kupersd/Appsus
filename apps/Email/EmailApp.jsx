@@ -5,8 +5,8 @@ import { EmailPreview } from "./cmps/EmailPreview.jsx";
 import { EmailToolbar } from "./cmps/EmailToolbar.jsx";
 import { emailService } from "./services/email-service.js";
 
-const Router = ReactRouterDOM.HashRouter;
-// const { Route, Switch } = ReactRouterDOM;
+const { Router } = ReactRouterDOM.HashRouter;
+const { Switch, Route } = ReactRouterDOM;
 
 // Simple React Component
 export class EmailApp extends React.Component {
@@ -34,12 +34,39 @@ export class EmailApp extends React.Component {
         });
     }
 
+    onCompose = () => {
+        this.setState({ isCompose: true });
+    }
+
+    onSent = () => {
+        this.setState({ isCompose: false });
+        this.loadEmails();
+    }
+
     onRemove = (emailId) => {
         emailService.remove(emailId).then(this.loadEmails);
     }
 
+    onUnreadFilter = () => {
+        this.setState({ filterBy: { mailBox: 'unread' } })
+    }
+
+    onAllMail = () => {
+        this.setState({ filterBy: { mailBox: 'all' } })
+    }
+        
+    onCloseMail = () => {
+        this.props.history.push('/email');
+    }
     get emailsForDisplay() {
-        return this.state.emails;
+        const { mailBox } = this.state.filterBy;
+        let filteredMails;
+        if (mailBox === 'unread') {
+            filteredMails = this.state.emails.filter(email => email.isRead === false);
+        } else {
+            filteredMails = this.state.emails;
+        }
+        return filteredMails;
     }
 
     render() {
@@ -48,11 +75,15 @@ export class EmailApp extends React.Component {
             <section className="email-app">
                 <h3>Account: {this.state.myMail}</h3>
                 <div className="email-main">
-                    <EmailToolbar />
-                    <EmailList emails={emailsForDisplay} onRemove={this.onRemove} />
+                    <EmailToolbar onCompose={this.onCompose} onUnread={this.onUnreadFilter} onAll={this.onAllMail}/>
+                    {/* <Router> */}
+                        <Switch>
+                            <Route path="/email/:emailId" render={() => <EmailDetails onBack={this.onCloseMail} />} />
+                            <Route path="/email" render={() => <EmailList emails={emailsForDisplay} onRemove={this.onRemove} />} />
+                        </Switch>
+                    {/* </Router> */}
                 </div>
-                <EmailDetails email={emailsForDisplay[0]} />
-                {this.state.isCompose && <EmailCompose onSend={this.loadEmails} />}
+                {this.state.isCompose && <EmailCompose onSend={this.onSent} />}
             </section>
         )
     }

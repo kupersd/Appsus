@@ -6,6 +6,7 @@ export const emailService = {
     query,
     send,
     remove,
+    getById
 }
 
 const KEY = 'emailsDB';
@@ -23,6 +24,10 @@ function query() {
     return Promise.resolve(gEmails);
 }
 
+function getById(emailId) {
+    const email = gEmails.find(email => email.id == emailId);       // TODO fix string/int
+    return Promise.resolve(email);
+}
 function send(email) {
     email = {
         id: utilService.makeId(),

@@ -69,6 +69,7 @@ footer {
 /* HELPERS */
 .flex { display: flex;}
 .flex.space-between {justify-content: space-between;}
+.flex.space-around {justify-content: space-around;}
 .flex.align-center {align-items: center;}
 .inline {display: inline;}
 .mrg-bottom { margin-bottom: 20px}

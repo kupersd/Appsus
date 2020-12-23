@@ -5,3 +5,7 @@ V Get mails from service
 V Render mails list
 - Compose. Add mail to data.
 V Emails basic layout
+- Add filter
+- Delete email
+- Render open email
+- Add more attribues to the email

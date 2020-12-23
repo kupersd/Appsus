@@ -1,0 +1,18 @@
+.pet-preview {
+    margin: 8px;
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.pet-preview h1 {
+    font-size: 1.5em;
+    color:goldenrod;
+}
+
+.pet-preview img {
+    max-height: 200px;
+}
+

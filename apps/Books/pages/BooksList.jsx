@@ -4,7 +4,7 @@ import { BookFilter } from '../cmps/book-filter.jsx'
 import { BookDetails } from '../cmps/book-details.jsx'
 
 
-export class BookApp extends React.Component {
+export class BooksList extends React.Component {
 
     state = {
         books: [],
@@ -44,8 +44,10 @@ export class BookApp extends React.Component {
     onSetFilter = (filterBy) => {
         this.setState({ filterBy });
     }
+
     render() {
 
+        
         return (
             <section className="book-app">
                 <BookFilter setFilter={this.onSetFilter} />

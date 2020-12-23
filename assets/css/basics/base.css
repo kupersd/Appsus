@@ -2,10 +2,26 @@ html, body, div, header, h1 {
     margin: 0;
     padding: 0;
 }
+:root {
+    --primary-color: rgb(47, 79, 79);
+    --secondary-color: rgb(245, 222, 179);
+    --inline-margin: 20px;
+}
+* {
+    box-sizing: border-box;
+}
 
 body {
-    background-color: rgb(62, 161, 194);
+    margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: beige;
+}
+
+button, input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    cursor: pointer;
 }
 
 a {
@@ -53,3 +69,10 @@ footer {
     background-color: gray;
 }
 
+/* HELPERS */
+.flex { display: flex;}
+.flex.space-between {justify-content: space-between;}
+.flex.align-center {align-items: center;}
+.mrg-bottom { margin-bottom: 20px}
+.mrg-start {margin-inline-start: var(--inline-margin);}
+.clean-list {list-style-type: none; margin: 0; padding: 0;}

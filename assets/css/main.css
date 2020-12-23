@@ -11,3 +11,5 @@
 @import './cmps/PetList.css';
 @import './cmps/PetPreview.css';
 
+/* BOOKS */
+@import './apps/books/BooksList.css'

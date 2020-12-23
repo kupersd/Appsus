@@ -3,7 +3,7 @@ const { Link } = ReactRouterDOM;
 export function BookPreview({ book }) {
 
     return (
-        <Link to={`/book/${book.id}`}>
+        <Link to={`/books/book/${book.id}`}>
             <article className="book-item flex space-between" key={book.id}>
                 <h3>
                     {book.title}

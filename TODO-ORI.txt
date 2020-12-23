@@ -1,0 +1,7 @@
+Stage #1
+========
+- Create demo emails data
+- Get mails from service 
+- Render mails list
+- Compose. Add mail to data.
+- Emails CSS

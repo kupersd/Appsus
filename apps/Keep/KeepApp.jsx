@@ -8,6 +8,7 @@ export class KeepApp extends React.Component {
         return (
             <Router>
                 <section className="app">
+                    <h1>Keep App</h1>
                     {/* <Switch>
                         <Route path="/pet/edit/:petId?" component={PetEdit} />
                         <Route path="/pet/:petId" component={PetDetails} />
@@ -16,7 +17,6 @@ export class KeepApp extends React.Component {
                         <Route path="/survey" component={Survey} />
                         <Route path="/" component={Home} />
                     </Switch> */}
-                    <h1>Keep App</h1>
                     {/* <footer className="animate__animated animate__jello">coffeerights 2020</footer> */}
                 </section>
             </Router>

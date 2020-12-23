@@ -3,5 +3,7 @@ Stage #1
 V Render all components
 V Create 4 notes with demo data
 V Render each note type
-- Get notes from service
+V Get notes from service
 - Add note from input
+- Add search/filter
+- Add video note

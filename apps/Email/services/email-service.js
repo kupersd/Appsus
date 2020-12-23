@@ -1,22 +1,42 @@
 import { storageService } from "../../../services/storageService.js";
+import { utilService } from "../../../services/utilService.js";
 
 export const emailService = {
-    query
+    myMail,
+    query,
+    send,
+    remove,
 }
 
 const KEY = 'emailsDB';
+const MY_MAIL = 'ori@misterbyte.co.il'
+
 var gEmails;
 _createEmails();
 
-function _createEmails() {
-    gEmails = storageService.load(KEY);
-    if (!gEmails || !gEmails.length) {
-        gEmails = _getDemoEmails()
-        _saveEmailsToStorage();
-    }
+window.mails = gEmails;
+
+function myMail() {
+    return Promise.resolve(MY_MAIL);
 }
 function query() {
     return Promise.resolve(gEmails);
+}
+
+function send(email) {
+    email = {
+        id: utilService.makeId(),
+        ...email
+    };
+    gEmails = [email, ...gEmails];
+    _saveEmailsToStorage();
+    return Promise.resolve(email);
+}
+
+function remove(emailId) {
+    gEmails = gEmails.filter(email => email.id !== emailId);
+    _saveEmailsToStorage();
+    return Promise.resolve();
 }
 
 function _saveEmailsToStorage() {
@@ -28,6 +48,8 @@ function _getDemoEmails() {
     const demoEmails = [
         {
             id: 1,
+            from: 'oriyahoo@coldmail.com',
+            to: 'Dudiyahoo@nsm.com',
             subject: `Win a Dream Mix in Our Year-End Party`,
             body: ` Win a Dream Mix
             Enter to win a free mix of your song by mixing engineer Manny Marroquin,
@@ -37,6 +59,8 @@ function _getDemoEmails() {
         },
         {
             id: 2,
+            from: 'mark@facebooklet.com',
+            to: 'Dudiyahoo@nsm.com',
             subject: `Here's my final schedule for your visit`,
             body: `doron,
     
@@ -56,6 +80,8 @@ function _getDemoEmails() {
         },
         {
             id: 3,
+            from: 'search@lycos.com',
+            to: 'results@excite.com',
             subject: `Cyber Monday Flash Sales | New SoundToys, Image Line & FXpansion Promotions`,
             body: `Plus iZotope Neutron Elements is FREE with every purchase
     
@@ -79,6 +105,8 @@ function _getDemoEmails() {
         },
         {
             id: 4,
+            from: 'alta@vista.com',
+            to: 'we_are_done@aol.com',
             subject: `Revealing the new Duolingo`,
             body: `Vibrant new style
     
@@ -96,4 +124,12 @@ function _getDemoEmails() {
     ];
     return demoEmails;
 
+}
+
+function _createEmails() {
+    gEmails = storageService.load(KEY);
+    if (!gEmails || !gEmails.length) {
+        gEmails = _getDemoEmails()
+        _saveEmailsToStorage();
+    }
 }

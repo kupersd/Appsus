@@ -3,9 +3,9 @@ Stage #1
 V Create demo emails data
 V Get mails from service 
 V Render mails list
-- Compose. Add mail to data.
+V Compose. Add mail to data.
 V Emails basic layout
-- Add filter
-- Delete email
-- Render open email
+- Add filter (check who sent/receive => inbox/sent)
+V Delete email
+V Render open email
 - Add more attribues to the email

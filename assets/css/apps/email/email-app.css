@@ -1,5 +1,6 @@
 .email-app h3 {
-    text-align: center;
+    text-align: right;
+    margin-inline-end: 20px;
     font-size: 0.8rem;
 }
 

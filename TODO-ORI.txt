@@ -23,9 +23,9 @@ V unread count on top
 V Ability to mark as read/unread
 V Design search/bar on top
 V Dynamic mailboxes render + Active class
+V css header
 - REPLY!
 - show date/time on list
-- css main app
 - Fix mailboxes (unread to section in inbox, dynamic <li> render)
 
 

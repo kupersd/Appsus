@@ -9,6 +9,7 @@ export const emailService = {
     toggleIsRead,
     getById,
     getNextPrev,
+    getMailBoxes,
     toWhichFolders,
     unreadCount
 }
@@ -84,6 +85,10 @@ function toWhichFolders(email) {
     if (email.from === MY_MAIL && email.to.length <= 3) mailBox = 'drafts';
 
     return mailBox;
+}
+
+function getMailBoxes() {
+    return Promise.resolve(['ALL', 'Inbox', 'Unread', 'Sent', 'Drafts']);
 }
 
 function _saveEmailsToStorage() {

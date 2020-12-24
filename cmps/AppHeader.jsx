@@ -25,16 +25,16 @@ class _AppHeader extends React.Component {
     render() {
         const {msg} = this.state; 
         return <header className="app-header">
-            <nav>
+            <nav className="flex space-between align-center">
                 <ul>
-                    <li><NavLink activeClassName="my-active" exact to="/">Home</NavLink></li>
+                    <li><NavLink exact to="/">Home</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
                     <li><NavLink to="/books">Books</NavLink></li>
                     <li><NavLink to="/email">Mail</NavLink></li>
                     <li><NavLink to="/keep">Keep</NavLink></li>
                 </ul>
-                <div className="center">
-                    <h1>My App</h1>
+                <div className="">
+                    <h1>Appsus. by Ori &amp;&amp; Dudi</h1>
                 </div>
             </nav>
             {msg && <div className="user-msg">

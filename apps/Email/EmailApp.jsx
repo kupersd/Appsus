@@ -2,14 +2,11 @@ import { EmailCompose } from "./cmps/EmailCompose.jsx";
 import { EmailDetails } from "./cmps/EmailDetails.jsx";
 import { EmailSearch } from "./cmps/EmailSearch.jsx";
 import { EmailList } from "./cmps/EmailList.jsx";
-import { EmailPreview } from "./cmps/EmailPreview.jsx";
 import { EmailToolbar } from "./cmps/EmailToolbar.jsx";
 import { emailService } from "./services/email-service.js";
 
-const { Router } = ReactRouterDOM.HashRouter;
 const { Switch, Route } = ReactRouterDOM;
 
-// Simple React Component
 export class EmailApp extends React.Component {
 
     state = {
@@ -22,19 +19,6 @@ export class EmailApp extends React.Component {
             mailText: '',
             currMailBox: 'all'
         }
-    }
-
-    onSetFilter = (mailText) => {
-        const filterCopy = { ...this.state.filterBy };
-        filterCopy.mailText = mailText;
-        console.log(filterCopy);
-        this.setState({ filterBy: filterCopy })
-    }
-
-    onSetMailbox = (mailBox) => {
-        const filterCopy = { ...this.state.filterBy };
-        filterCopy.currMailBox = mailBox;
-        this.setState({ filterBy: filterCopy })
     }
 
     componentDidMount() {
@@ -51,6 +35,19 @@ export class EmailApp extends React.Component {
         });
     }
 
+    onSetFilter = (mailText) => {
+        const filterCopy = { ...this.state.filterBy };
+        filterCopy.mailText = mailText;
+        console.log(filterCopy);
+        this.setState({ filterBy: filterCopy })
+    }
+
+    onSetMailbox = (mailBox) => {
+        const filterCopy = { ...this.state.filterBy };
+        filterCopy.currMailBox = mailBox;
+        this.setState({ filterBy: filterCopy })
+    }
+
     onCompose = () => {
         this.setState({ isCompose: true });
     }
@@ -65,13 +62,14 @@ export class EmailApp extends React.Component {
     }
 
     onToggleIsRead = (emailId) => {
-        console.log('toggle read', emailId);
         emailService.toggleIsRead(emailId)
             .then(this.loadEmails);
     }
+
     onCloseMail = () => {
         this.props.history.push('/email');
     }
+
     get emailsForDisplay() {
 
         const { filterBy } = this.state;
@@ -81,7 +79,6 @@ export class EmailApp extends React.Component {
                 ((emailService.toWhichFolders(email) === this.state.filterBy.currMailBox) ||
                     this.state.filterBy.currMailBox === 'all'))
         });
-
     }
 
     render() {

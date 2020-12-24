@@ -21,7 +21,7 @@ export class NoteAdd extends React.Component {
             .then(savedNote => {
                 console.log('Saved succesfully', savedNote);
                 this.props.showAddedNote()
-                this.setState({inputText: ''})
+                this.setState({ inputText: '' })
             })
 
     };
@@ -35,7 +35,8 @@ export class NoteAdd extends React.Component {
                 note.info = { text: inputText }
                 break;
             case 'noteImg':
-                note.info = { url: inputText }
+            case 'noteVideo':
+                note.info = { url: inputText, title:'' }
                 break;
             case 'noteTodos':
                 const todosTxts = inputText.split(',')
@@ -59,6 +60,9 @@ export class NoteAdd extends React.Component {
             case 'noteImg':
                 placeholder = 'Enter image URL...'
                 break;
+            case 'noteVideo':
+                placeholder = 'Enter video URL...'
+                break;
             case 'noteTodos':
                 placeholder = 'Enter comma separated list...'
                 break;
@@ -68,13 +72,14 @@ export class NoteAdd extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.onSaveNote}>
+            <form className="note-add" onSubmit={this.onSaveNote}>
 
                 <input value={this.state.inputText}
                     placeholder={this.state.placeholder} type="text" name="inputText"
                     onChange={this.onInputChange} />
                 <button type="button" onClick={() => { this.onChooseNoteType('noteText') }}>Text</button>
                 <button type="button" onClick={() => { this.onChooseNoteType('noteImg') }}>Img</button>
+                <button type="button" onClick={() => { this.onChooseNoteType('noteVideo') }}>Video</button>
                 <button type="button" onClick={() => { this.onChooseNoteType('noteTodos') }}>Todos</button>
 
 

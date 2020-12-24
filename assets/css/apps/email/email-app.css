@@ -5,13 +5,25 @@
 
 .email-main {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 150px 1fr;
     grid-gap: 10px;
+}
+.email-search {
+    background-color: #fff;
+    margin: 20px auto;
+    width: 50vw;
+}
+.email-search input {
+    height: 30px;
+    width: 100%;
 }
 .email-toolbar {
     background-color: #fff;
     font-weight: bold;
     padding: 15px;
+}
+.email-toolbar .active {
+    background-color: rgb(216, 50, 0);
 }
 .email-toolbar button {
     margin-inline-start: 0;
@@ -22,12 +34,14 @@
 }
 .email-toolbar li {
     margin: 5px;
+    padding: 5px;
     cursor: pointer;
 }
 .emails-list {
     background-color: rgb(255, 255, 255);
 }
 .emails-list table {
+    table-layout: fixed;
     width: 100%;
     
 }
@@ -36,6 +50,9 @@
     display: inline-block;
     white-space: nowrap;
     border-bottom: 1px solid #bbb;
+}
+.read {
+    color: #999;
 }
 .email-preview{
     border-bottom: 1px solid #333;
@@ -76,15 +93,38 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.9em;
 }
+
+/* COMPOSE */
 .email-compose {
-    grid-column: 1 / 3;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    bottom: 0px;
+    right: 20px;
 }
-
-.email-form input{
+.email-compose button {
+    background-color: #334;
+    color: #fff;
+}
+.email-compose .top-bar {
+    background-color: #334;
+    color: #fff;
+}
+.email-compose h4 {
+    padding: 10px;
+    margin: 0;
+}
+.compose-form input{
     display: block;
-    width: 40vw;
+    background-color: #fff;
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
 }
-
-.read {
-    color: #999;
+.compose-form textarea {
+    padding: 10px;
+    border: none;
+    outline: none;
+    resize: none;
 }

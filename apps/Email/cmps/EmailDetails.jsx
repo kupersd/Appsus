@@ -25,13 +25,12 @@ class _EmailDetails extends React.Component {
 
     onPrevEmail = () => {
         emailService.getNextPrev(this.state.email.id)
-            .then(negs => this.props.history.push(`/email/${negs.prevIdx}`));
-        }
-        
-        onNextEmail = () => {
-            emailService.getNextPrev(this.state.email.id)
-            .then(negs => console.log(negs.nextIdx));
-        // .then(negs => this.props.history.push(`/email/${negs.nextIdx}`));
+            .then(negs => this.props.history.push(`/email/${negs.prevEmailId}`));
+    }
+
+    onNextEmail = () => {
+        emailService.getNextPrev(this.state.email.id)
+            .then(negs => this.props.history.push(`/email/${negs.nextEmailId}`));
     }
 
     render() {

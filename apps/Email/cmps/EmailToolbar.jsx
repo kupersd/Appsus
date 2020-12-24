@@ -1,6 +1,6 @@
-const { NavLink } = ReactRouterDOM;
+const { withRouter } = ReactRouterDOM;
 
-export class EmailToolbar extends React.Component {
+export class _EmailToolbar extends React.Component {
 
     state = {
         filterBy: {
@@ -8,6 +8,7 @@ export class EmailToolbar extends React.Component {
         }
     }
     
+    mailBoxes = ['ALL', 'Inbox', 'Unread', 'Sent', 'Drafts'];       // TODO : ... get from service of course.
     componentDidMount() {
         console.log('Email Toolbar Loaded')
     }
@@ -16,22 +17,30 @@ export class EmailToolbar extends React.Component {
         const callback = () => {
             this.props.onSetMailbox(this.state.filterBy.currMailBox);
         }
-        this.setState({ filterBy: { currMailBox: mailBox} }, callback);
+        this.setState({ filterBy: { currMailBox: mailBox } }, callback);
+        this.props.history.push('/email')
     }
 
     // TODO :: Map for li, class for active
     render() {
+        const { currMailBox } = this.props;
+        console.log(currMailBox)
         return (
             <section className="email-toolbar">
                 <button onClick={this.props.onCompose}>Compose</button>
                 <ul className="clean-list">
-                    <li onClick={() => { this.setMailbox('all') }}>ALL</li>
-                    <li onClick={() => { this.setMailbox('inbox') }}>Inbox</li>
-                    <li onClick={() => { this.setMailbox('unread') }}>Unread</li>
-                    <li onClick={() => { this.setMailbox('sent') }}>Sent</li>
-                    <li onClick={() => { this.setMailbox('drafts') }}>Drafts</li>
+
+                    {this.mailBoxes.map(box => {
+                        const addCount = (box.toLowerCase() === 'inbox') ? ` (${this.props.unreadCount})` : ''
+                        const isActiveClass = (box.toLowerCase() === currMailBox) ? 'active' : ''
+                        return <li className={isActiveClass} onClick={() => { this.setMailbox(`${box.toLowerCase()}`) }}>
+                            {box + addCount}
+                        </li>
+                    })
+                    }
                 </ul>
             </section>
         )
     }
 }
+export const EmailToolbar = withRouter(_EmailToolbar);

@@ -6,9 +6,11 @@ export const emailService = {
     query,
     send,
     remove,
+    toggleIsRead,
     getById,
     getNextPrev,
-    toWhichFolders
+    toWhichFolders,
+    unreadCount
 }
 
 const KEY = 'emailsDB';
@@ -29,13 +31,12 @@ function getById(emailId) {
 }
 function getNextPrev(emailId) {
     const currIdx = gEmails.findIndex(email => email.id === emailId);
-    console.log('email index:', currIdx);
-    let nextIdx = (currIdx === gEmails.length - 1) ? 0 : currIdx + 1;
-    let prevIdx = (currIdx === 0) ? gEmails.length - 1 : currIdx - 1;
-    console.log({ nextIdx, prevIdx });
-    return Promise.resolve({ nextIdx, prevIdx });
+    const nextIdx = (currIdx === gEmails.length - 1) ? 0 : currIdx + 1;
+    const prevIdx = (currIdx === 0) ? gEmails.length - 1 : currIdx - 1;
+    const nextEmailId = gEmails[nextIdx].id;
+    const prevEmailId = gEmails[prevIdx].id;
+    return Promise.resolve({ nextEmailId, prevEmailId });
 }
-
 
 function send(email) {
     email = {
@@ -53,14 +54,32 @@ function remove(emailId) {
     return Promise.resolve();
 }
 
+function toggleIsRead(emailId) {
+    const emailCopy = gEmails.find(email => email.id == emailId);
+    const emailsCopy = [...gEmails];
+    const emailCopyIdx = emailsCopy.findIndex(email => emailCopy.id === email.id);
+    emailsCopy[emailCopyIdx].isRead = !emailsCopy[emailCopyIdx].isRead;
+    gEmails = emailsCopy;
+    _saveEmailsToStorage();
+    return Promise.resolve();
+}
+
+function unreadCount() {
+    let count = 0;
+    gEmails.forEach(email => {
+        if (!email.isRead) count ++
+    })
+    return Promise.resolve(count);
+}
+
 function myMail() {
     return Promise.resolve(MY_MAIL);
 }
 
 function toWhichFolders(email) {
     let mailBox ;
-    if (email.to === MY_MAIL && email.isRead) mailBox = 'inbox';
-    if (email.to === MY_MAIL && !email.isRead) mailBox = 'unread';
+    if (email.to === MY_MAIL) mailBox = 'inbox';
+    // if (email.to === MY_MAIL && !email.isRead) mailBox = 'unread';
     if (email.from === MY_MAIL && email.to.length > 3) mailBox = 'sent';
     if (email.from === MY_MAIL && email.to.length <= 3) mailBox = 'drafts';
 

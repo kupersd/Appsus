@@ -5,6 +5,7 @@ export class EmailCompose extends React.Component {
     state = {
         email: {
             to: '',
+            cc: '',
             subject: '',
             body: ''
         }
@@ -24,23 +25,36 @@ export class EmailCompose extends React.Component {
         })
     }
 
+    onCancel = () => {
+        this.props.onCancel();
+    }
+    
     render() {
         return (
-            <section className="email-compose">
+            <section className="email-compose shadow">
 
-                <h1>Compose Mail</h1>
-                <form className="email-form" onSubmit={this.onSendEmail}>
+                <div className="top-bar flex space-between">
+                    <h4>New Message</h4>
+                    <button onClick={this.onCancel}>X</button>
+                </div>
+                <form className="compose-form" onSubmit={this.onSendEmail}>
                     <input value={this.state.to}
-                        placeholder="Recpient" type="text"
+                        placeholder="To" type="text"
                         name="to" onChange={this.onInputChange} />
+                    <input value={this.state.cc}
+                        placeholder="Cc" type="text"
+                        name="cc" onChange={this.onInputChange} />
                     <input value={this.state.subject}
                         placeholder="Subject" type="text"
                         name="subject" onChange={this.onInputChange} />
                     <textarea value={this.state.textarea}
-                        placeholder="Start writing..." rows="12" cols="80"
+                        placeholder="Message..." rows="12" cols="80"
                         name="body" onChange={this.onInputChange}>
                     </textarea>
-                    <button type="submit">Send</button>
+                    <div className="flex">
+
+                        <button type="submit">Send</button>
+                    </div>
                 </form>
             </section>
         )

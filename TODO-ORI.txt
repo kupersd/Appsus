@@ -16,11 +16,19 @@ V Search box for filtering
 V Flexible filter model
 V Add more attribues to the email (cc, nickname for mail addresses)
 V Design email preview as gmail. with buttons
-- Fix mailboxes (unread to section in inbox, dynamic <li> render)
-- Design compose mail
-V Design emaildetails
+V Design compose mail
+V Design Emaildetails
+V Add next/prev mail
+V unread count on top
+V Ability to mark as read/unread
+V Design search/bar on top
+V Dynamic mailboxes render + Active class
 - REPLY!
 - show date/time on list
-- unread count on top
-- Ability to mark as read/unread
 - css main app
+- Fix mailboxes (unread to section in inbox, dynamic <li> render)
+
+
+ALON MEETING Thrusday Evening:
+================================
+- CSS

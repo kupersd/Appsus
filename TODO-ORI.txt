@@ -1,4 +1,4 @@
-Stage #1
+Day #1
 ========
 V Create demo emails data
 V Get mails from service 
@@ -7,5 +7,14 @@ V Compose. Add mail to data.
 V Emails basic layout
 V Delete email
 V Render open email
-- Add filter (check who sent/receive => inbox/sent) READ/UNREAD
-- Add more attribues to the email
+V Add filter (check who sent/receive => inbox/sent) READ/UNREAD
+
+
+Day #2
+========
+V Search box for filtering
+V Flexible filter model
+V Add more attribues to the email (cc, nickname for mail addresses)
+- Design email preview as gmail. with buttons
+- Fix mailboxes (unread to section in inbox, dynamic <li> render)
+- Design compose mail

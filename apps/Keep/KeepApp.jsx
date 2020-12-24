@@ -1,5 +1,7 @@
+import { DynamicNoteCmp } from "./cmps/DynamicNoteCmp.jsx";
 import { KeepFilter } from "./cmps/KeepFilter.jsx";
 import { NoteAdd } from "./cmps/NoteAdd.jsx";
+import { NoteEdit } from "./cmps/NoteEdit.jsx";
 import { NoteList } from "./cmps/NoteList.jsx";
 import { keepService } from "./services/keepService.js";
 
@@ -14,7 +16,9 @@ export class KeepApp extends React.Component {
         filterBy: {
             freeText: '',
             type: ''
-        }
+        },
+        noteToEdit: { type: '', info: {} },
+        isUpdateNote: false
     };
 
     componentDidMount() {
@@ -26,7 +30,21 @@ export class KeepApp extends React.Component {
             .then(notes => { console.log(notes); this.setState({ notes }); })
     }
 
-    onAns = () => { console.log('Answer........') }
+    onUpdateNote = (ev, noteId, todoIdx) => {
+        console.log(ev)
+        const text = ev.target.innerText
+        keepService.getNoteById(noteId)
+            .then( noteToEdit => {
+                if (noteToEdit.type === 'noteText') {
+                    noteToEdit.info.text = text;
+                    keepService.save(noteToEdit)
+                    
+                } else if (noteToEdit.type === 'noteTodos') {
+                    noteToEdit.info.todos[todoIdx].text = text;
+                    keepService.save(noteToEdit)
+                } else this.setState({noteToEdit, isUpdateNote: true})
+            })
+    }
 
     get notesForDisplay() {
         const { filterBy, notes } = this.state;
@@ -37,6 +55,7 @@ export class KeepApp extends React.Component {
                 case 'noteText':
                     return filterRegex.test(note.info.text)
                 case 'noteImg':
+                case 'noteVideo':
                     return filterRegex.test(note.info.url)
                 case 'noteTodos':
                     return note.info.todos.some(todo => filterRegex.test(todo.text))
@@ -54,6 +73,11 @@ export class KeepApp extends React.Component {
         this.setState({ filterBy });
     }
 
+    onUpdateNoteDone = () => {
+        this.setState({isUpdateNote:false})
+        this.loadNotes()
+    }
+
     render() {
         return (
             <section className="keep-app">
@@ -62,7 +86,8 @@ export class KeepApp extends React.Component {
                     <KeepFilter setFilter={this.onSetFilter} />
                 </header>
                 <NoteAdd showAddedNote={this.loadNotes} />
-                <NoteList notes={this.notesForDisplay} onAns={this.onAns} onDelete={this.onDelete} />
+                <NoteList notes={this.notesForDisplay} onNoteChosen={this.onUpdateNote} onDelete={this.onDelete} />
+                {this.state.isUpdateNote && <NoteEdit note={this.state.noteToEdit} onUpdateNote={this.onUpdateNoteDone}/>}
                 {/* <Switch>
                         <Route path="/pet/edit/:petId?" component={PetEdit} />
                         <Route path="/pet/:petId" component={PetDetails} />

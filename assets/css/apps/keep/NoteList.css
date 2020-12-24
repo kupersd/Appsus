@@ -1,3 +1,7 @@
+/* .keep-app {
+    position: relative;
+} */
+
 .note-list {
     flex-wrap: wrap;
 }
@@ -11,4 +15,20 @@
 .note-text, .note-todos {
     background-color: rgb(129, 102, 102);
     font-size: 1.5em;
+}
+
+.note-add {
+    margin: 5px auto;
+    max-width: 50vw;
+}
+
+.note-edit {
+    position: absolute;
+    max-width: 30vw;
+    right: 300px;
+    bottom: 100px;
+    background-color: rgb(187, 168, 168);
+    transform: translateX(-300px);
+    /* transform: translateY(-300px); */
+
 }

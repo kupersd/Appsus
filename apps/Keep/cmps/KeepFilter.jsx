@@ -28,6 +28,7 @@ export class KeepFilter extends React.Component {
                 <option value="">All</option>
                 <option value="noteText">Text</option>
                 <option value="noteImg">Image</option>
+                <option value="noteVideo">Video</option>
                 <option value="noteTodos">Todos</option>
             </select>
         </section>;

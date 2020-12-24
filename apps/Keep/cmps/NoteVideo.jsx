@@ -1,8 +1,8 @@
-export function NoteVideo({ info, onNoteChosen }) {
+export function NoteVideo({ info, style, onNoteChosen }) {
     console.log(info.url)
-    return <div className="note-video" onClick={onNoteChosen}>
-        <iframe width="273" height="205" src={info.url}></iframe>
-        <h2>{info.title}</h2>
+    return <div style={style} className="note-video">
+        <iframe width="280" height="210" src={info.url}></iframe>
+        <h2 contentEditable onInput={onNoteChosen} suppressContentEditableWarning={true}>{info.title}</h2>
+        <img src="apps/Keep/assets/img/youtube.png" />
     </div>
-    // return <video src={info.url} onClick={onAns} />
 }

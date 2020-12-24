@@ -7,6 +7,7 @@ export const keepService = {
     getUnPinned,
     getNoteById,
     save,
+    copyNote,
     deleteNote,
     pinToggle,
     setBgc,
@@ -54,6 +55,17 @@ function _add(note) {
     return Promise.resolve(note)
 }
 
+function copyNote(noteId) {
+    const noteToCopy = gNotes.find(note => note.id===noteId)
+    const noteToAdd = {...noteToCopy}
+    noteToAdd.id = utilService.makeId();
+    const notes = [...gNotes, noteToAdd]
+    noteToAdd.isPinned = false
+    gNotes = notes;
+    _saveNotesToStorage();
+    return Promise.resolve(noteToAdd)
+}
+
 function _update(note) {
     const noteToUpdate = {
         ...note
@@ -93,6 +105,7 @@ function setBgc(noteId, bgc) {
     const noteToUpdateIdx = notes.findIndex(note => note.id === noteId)
     if (!notes[noteToUpdateIdx].style) notes[noteToUpdateIdx].style={} 
     notes[noteToUpdateIdx].style = {backgroundColor:bgc}
+    console.log('BGC', notes[noteToUpdateIdx].style)
     gNotes = notes;
     _saveNotesToStorage()
 }

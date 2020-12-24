@@ -14,16 +14,21 @@ export class NoteAdd extends React.Component {
     }
 
     onSaveNote = (ev) => {//on submit
+        const {note} = this.state
         ev.preventDefault();
         if (!this.state.inputText) {
             alert('Please enter something....')
             return
         }
-        keepService.save(this.state.note)
+        if (note.type === 'noteVideo') {
+            note.info.url = note.info.url.replace('watch?v=', 'embed/');
+            console.log('note.info.url', note.info.url);
+        } 
+        keepService.save(note)
             .then(savedNote => {
                 console.log('Saved succesfully', savedNote);
                 this.props.showAddedNote()
-                this.setState({ note: { type: 'noteText', info: {} }, inputText: '' })
+                this.setState({ note: { type: note.type, info: {} }, inputText: '' })
             })
 
     };

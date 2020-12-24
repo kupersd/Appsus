@@ -17,7 +17,9 @@ V add note pin
 V inline styling
 V Toolbar Design and implement
 V color picker
-- inline edit image
-- copy note
+V inline edit image
+V copy note
 - focus on input. on mount, inline edit
-- fix layout by merging pinned / not pinned.
+V fix layout by merging pinned / not pinned.
+- fix bug of presenting pinned.
+V convert videos to embed

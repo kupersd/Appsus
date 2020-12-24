@@ -1,4 +1,4 @@
-export class EmailFilter extends React.Component {
+export class EmailSearch extends React.Component {
 
     state = {
         filterBy: {
@@ -18,7 +18,7 @@ export class EmailFilter extends React.Component {
     }
 
     render() {
-        return <section>
+        return <section className="email-search">
             <input type="text" name="mailText"
                 value={this.state.filterBy.mailText}
                 placeholder="Search mail..."

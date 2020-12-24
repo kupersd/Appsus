@@ -20,7 +20,7 @@ body {
 button, input {
     border: none;
     outline: none;
-    padding: 5px;
+    /* padding: 5px; */
 }
 a {
     color: inherit;
@@ -72,3 +72,9 @@ footer {
 .mrg-bottom { margin-bottom: 20px}
 .mrg-start {margin-inline-start: var(--inline-margin);}
 .clean-list {list-style-type: none; margin: 0; padding: 0;}
+.bold {font-weight: bold;}
+.non-bold {font-weight: normal;}
+.shadow {-webkit-box-shadow: 0px 3px 16px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 3px 16px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 3px 16px 0px rgba(50, 50, 50, 0.75);}
+.pointer {cursor: pointer;}

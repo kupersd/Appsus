@@ -5,12 +5,16 @@
 
 .app-header h1 {
     font-size: 2em;
+    color: whitesmoke;
+    margin: 0 20px;
 }
 .app-header nav ul {
     list-style: none;
 }
 
 .app-header nav li{
+    font-size: 1.2rem;
+    font-weight: bold;
     display: inline-block;
     margin: .5em;
 }

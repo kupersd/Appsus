@@ -1,5 +1,6 @@
 export const utilService = {
-    makeId
+    makeId,
+    stringifyTimestamp
 };
 
 function makeId(length = 6) {
@@ -11,4 +12,9 @@ function makeId(length = 6) {
     }
 
     return txt;
+}
+
+function stringifyTimestamp(ts) {
+    let d = new Date(ts);
+    return d.toLocaleDateString();
 }

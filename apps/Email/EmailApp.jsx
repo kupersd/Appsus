@@ -63,26 +63,11 @@ export class EmailApp extends React.Component {
         emailService.remove(emailId).then(this.loadEmails);
     }
 
-    // onUnreadFilter = () => {
-    //     this.setState({ filterBy: { mailBox: 'unread' } })
-    // }
-
-    // onAllMail = () => {
-    //     this.setState({ filterBy: { mailBox: 'all' } })
-    // }
-
     onCloseMail = () => {
         this.props.history.push('/email');
     }
     get emailsForDisplay() {
-        // const { mailBox } = this.state.filterBy;
-        // let filteredMails;
-        // if (mailBox === 'unread') {
-        //     filteredMails = this.state.emails.filter(email => email.isRead === false);
-        // } else {
-        //     filteredMails = this.state.emails;
-        // }
-        // return filteredMails;
+
         const { filterBy } = this.state;
         const filterRegex = new RegExp(filterBy.mailText, 'i');
         return this.state.emails.filter(email => {
@@ -103,7 +88,9 @@ export class EmailApp extends React.Component {
                     <EmailToolbar onCompose={this.onCompose} onSetMailbox={this.onSetMailbox} />
                     {/* <Router> */}
                     <Switch>
-                        <Route path="/email/:emailId" render={() => <EmailDetails onBack={this.onCloseMail} />} />
+                        <Route path="/email/:emailId" render={() =>
+                            <EmailDetails onBack={this.onCloseMail}
+                                onRemove={this.onRemove} />} />
                         <Route path="/email" render={() => <EmailList emails={emailsForDisplay} onRemove={this.onRemove} />} />
                     </Switch>
                     {/* </Router> */}

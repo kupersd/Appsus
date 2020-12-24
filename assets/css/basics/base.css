@@ -75,3 +75,5 @@ footer {
 .mrg-bottom { margin-bottom: 20px}
 .mrg-start {margin-inline-start: var(--inline-margin);}
 .clean-list {list-style-type: none; margin: 0; padding: 0;}
+.bold {font-weight: bold;}
+.non-bold {font-weight: normal;}

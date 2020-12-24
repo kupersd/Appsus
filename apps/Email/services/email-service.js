@@ -7,6 +7,7 @@ export const emailService = {
     send,
     remove,
     getById,
+    getNextPrev,
     toWhichFolders
 }
 
@@ -18,20 +19,6 @@ _createEmails();
 
 window.mails = gEmails;
 
-function myMail() {
-    return Promise.resolve(MY_MAIL);
-}
-
-function toWhichFolders(email) {
-    let mailBox ;
-    if (email.to === MY_MAIL && email.isRead) mailBox = 'inbox';
-    if (email.to === MY_MAIL && !email.isRead) mailBox = 'unread';
-    if (email.from === MY_MAIL && email.to.length > 3) mailBox = 'sent';
-    if (email.from === MY_MAIL && email.to.length <= 3) mailBox = 'drafts';
-
-    return mailBox;
-}
-
 function query() {
     return Promise.resolve(gEmails);
 }
@@ -40,6 +27,16 @@ function getById(emailId) {
     const email = gEmails.find(email => email.id == emailId);       // TODO fix string/int
     return Promise.resolve(email);
 }
+function getNextPrev(emailId) {
+    const currIdx = gEmails.findIndex(email => email.id === emailId);
+    console.log('email index:', currIdx);
+    let nextIdx = (currIdx === gEmails.length - 1) ? 0 : currIdx + 1;
+    let prevIdx = (currIdx === 0) ? gEmails.length - 1 : currIdx - 1;
+    console.log({ nextIdx, prevIdx });
+    return Promise.resolve({ nextIdx, prevIdx });
+}
+
+
 function send(email) {
     email = {
         id: utilService.makeId(),
@@ -54,6 +51,20 @@ function remove(emailId) {
     gEmails = gEmails.filter(email => email.id !== emailId);
     _saveEmailsToStorage();
     return Promise.resolve();
+}
+
+function myMail() {
+    return Promise.resolve(MY_MAIL);
+}
+
+function toWhichFolders(email) {
+    let mailBox ;
+    if (email.to === MY_MAIL && email.isRead) mailBox = 'inbox';
+    if (email.to === MY_MAIL && !email.isRead) mailBox = 'unread';
+    if (email.from === MY_MAIL && email.to.length > 3) mailBox = 'sent';
+    if (email.from === MY_MAIL && email.to.length <= 3) mailBox = 'drafts';
+
+    return mailBox;
 }
 
 function _saveEmailsToStorage() {

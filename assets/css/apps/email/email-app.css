@@ -27,20 +27,35 @@
 .emails-list {
     background-color: #fff;
 }
-
+.emails-list table {
+    width: 100%;
+    
+}
+.emails-list table td {
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+}
 .email-preview{
     border-bottom: 1px solid #333;
+    font-size: 0.8rem;
+}
+.email-preview .from {
+    /* max-width: 12ch; */
+    width: 20%;
+}
+.email-preview .subject {
+    width: 40%;
+    font-weight: bold;
 }
 
-.email-preview h4 {
-    margin: 0 1em 0 0;
-    font-size: 1rem;
+.email-preview .snippet {
+    width: 30%;
 }
-
-.email-preview p {
-    font-size: 0.9rem;
+.email-preview .icon {
+    width: 20px;
+    height: 20px;
 }
-
 .email-details {
     grid-column: 2 / 3;
     background-color: #ddd;

@@ -5,10 +5,18 @@ export function EmailList({ emails, onRemove }) {
 
     return (
         <section className="emails-list">
-            {emails.map(email => {
-                return <EmailPreview key={email.id} email={email}
-                onRemove={onRemove}/>
-            })}
+            <table>
+                <thead>
+                    <tr><th>Place Holder Deluxe (.. tdb: unread section)</th></tr>
+                </thead>
+                <tbody>
+                    {emails.map(email => {
+                        return <EmailPreview key={email.id} email={email}
+                            onRemove={onRemove} />
+                    })}
+                </tbody>
+
+            </table>
         </section>
     )
 }

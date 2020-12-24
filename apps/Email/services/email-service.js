@@ -6,6 +6,8 @@ export const emailService = {
     query,
     send,
     remove,
+    getById,
+    toWhichFolders
 }
 
 const KEY = 'emailsDB';
@@ -19,10 +21,25 @@ window.mails = gEmails;
 function myMail() {
     return Promise.resolve(MY_MAIL);
 }
+
+function toWhichFolders(email) {
+    let mailBox ;
+    if (email.to === MY_MAIL && email.isRead) mailBox = 'inbox';
+    if (email.to === MY_MAIL && !email.isRead) mailBox = 'unread';
+    if (email.from === MY_MAIL && email.to.length > 3) mailBox = 'sent';
+    if (email.from === MY_MAIL && email.to.length <= 3) mailBox = 'drafts';
+
+    return mailBox;
+}
+
 function query() {
     return Promise.resolve(gEmails);
 }
 
+function getById(emailId) {
+    const email = gEmails.find(email => email.id == emailId);       // TODO fix string/int
+    return Promise.resolve(email);
+}
 function send(email) {
     email = {
         id: utilService.makeId(),
@@ -48,8 +65,9 @@ function _getDemoEmails() {
     const demoEmails = [
         {
             id: 1,
-            from: 'oriyahoo@coldmail.com',
+            from: MY_MAIL,
             to: 'Dudiyahoo@nsm.com',
+            cc: 'alon@misterbit.co.il',
             subject: `Win a Dream Mix in Our Year-End Party`,
             body: ` Win a Dream Mix
             Enter to win a free mix of your song by mixing engineer Manny Marroquin,
@@ -59,8 +77,9 @@ function _getDemoEmails() {
         },
         {
             id: 2,
-            from: 'mark@facebooklet.com',
+            from: MY_MAIL,
             to: 'Dudiyahoo@nsm.com',
+            cc: 'yaron@codingacademy.com',
             subject: `Here's my final schedule for your visit`,
             body: `doron,
     
@@ -81,7 +100,8 @@ function _getDemoEmails() {
         {
             id: 3,
             from: 'search@lycos.com',
-            to: 'results@excite.com',
+            to: MY_MAIL,
+            cc: '',
             subject: `Cyber Monday Flash Sales | New SoundToys, Image Line & FXpansion Promotions`,
             body: `Plus iZotope Neutron Elements is FREE with every purchase
     
@@ -106,7 +126,8 @@ function _getDemoEmails() {
         {
             id: 4,
             from: 'alta@vista.com',
-            to: 'we_are_done@aol.com',
+            to: MY_MAIL,
+            cc: '',
             subject: `Revealing the new Duolingo`,
             body: `Vibrant new style
     
@@ -119,7 +140,55 @@ function _getDemoEmails() {
             Treasure chests pop open, your streak flame explodes, and Duo waves to you. How’s that for motivation?`,
             isRead: false,
             sentAt: 1551243930583
-        }
+        },
+        {
+            id: 5,
+            from: 'do-not-reply@info.maccabi4u.co.il',
+            fromName: 'הפועל שירותי בריאות',
+            to: MY_MAIL,
+            cc: '',
+            subject: `היי אורי, בוא נדבר על החיסון`,
+            body: `
+            שלום אורי,
+            אחרי שנה מלאת אתגרים, מגיעים בימים אלה חיסוני הקורונה לישראל. ריכזנו עבורך את כל מה שצריך לדעת על חיסוני הקורונה:                 
+            איור של יד עליה מונח בקבוק 	
+             
+            יש תופעות לוואי לחיסון? האם החיסון משנה את המטען הגנטי?
+            כל התשובות בנושא חיסוני הקורונה 	`,
+            isRead: true,
+            sentAt: 1551243930583
+        },
+        {
+            id: 6,
+            from: '<info@greeninvoice.co.il',
+            fromName: 'חשבונית בצבע ירוק',
+            to: MY_MAIL,
+            cc: '',
+            subject: `שמים מסמכים בעננים`,
+            body: `green_market...
+
+            והפעם בפינתנו "לגבות את כל המסמכים מיד - שאלו אותנו כיצד", נדבר על גוגל דרייב.
+            קודם כל, הוא התוסף הפופולארי ביותר בחנות שלנו כי הוא יעשה לכם הרבה סדר בעסק ובעבודה השוטפת. וגם כי הוא בחינם למנויי Popular ומעלה, אז למה לא.
+
+            החיבור יוצר תיקייה שבה יגובו בצורה קבועה ואוטומטית כל המסמכים שתגדירו,
+            מחשבוניות, הצעות מחיר ועד דוחות תקופתיים.
+            הם יחכו לכם בתיקייה כשתרצו לגשת אליהם או לשלוח אותם.`,
+            isRead: true,
+            sentAt: 1551243930583
+        },
+        {
+            id: 7,
+            from: MY_MAIL,
+            fromName: '',
+            to: '',
+            cc: '',
+            subject: `a Few thoughts...`,
+            body: `before moving to my new apartment I think we should consider starting a new service. my thoughts are almost lorem ipsumiyot at this point,
+            writing a draft email body. This sprint is nice, I hope it will go well...`,
+            isRead: true,
+            sentAt: 1551243930583
+        },
+
 
     ];
     return demoEmails;

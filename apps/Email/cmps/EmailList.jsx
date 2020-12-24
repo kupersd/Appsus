@@ -1,7 +1,7 @@
 import { EmailPreview } from "./EmailPreview.jsx"
 
 export function EmailList({ emails, onRemove }) {
-    if (!emails || emails.length === 0) return <div>Loading emails...</div>;
+    if (!emails || emails.length === 0) return <div>No emails to show...</div>;
 
     return (
         <section className="emails-list">

@@ -31,18 +31,17 @@ export class KeepApp extends React.Component {
     }
 
     onUpdateNote = (ev, noteId, todoIdx) => {
-        console.log(ev)
+        if (!ev) return
         const text = ev.target.innerText
         keepService.getNoteById(noteId)
-            .then( noteToEdit => {
+            .then(noteToEdit => {
                 if (noteToEdit.type === 'noteText') {
                     noteToEdit.info.text = text;
                     keepService.save(noteToEdit)
-                    
+
                 } else if (noteToEdit.type === 'noteTodos') {
-                    noteToEdit.info.todos[todoIdx].text = text;
                     keepService.save(noteToEdit)
-                } else this.setState({noteToEdit, isUpdateNote: true})
+                } else this.setState({ noteToEdit, isUpdateNote: true })
             })
     }
 
@@ -68,13 +67,28 @@ export class KeepApp extends React.Component {
         this.loadNotes()
     }
 
+    onPin = (noteId) => {
+        keepService.pinToggle(noteId)
+        this.loadNotes()
+    }
+
+    onSetBgc = (ev, noteId) => {
+        keepService.setBgc(noteId, ev.target.value)
+        this.loadNotes()
+    }
+
+    onTodoDone = (noteId, todoIdx) => {
+        keepService.toggleTodo(noteId, todoIdx)
+        this.loadNotes()
+    }
+
     onSetFilter = (filterBy) => {
         console.log('filterBy:', filterBy);
         this.setState({ filterBy });
     }
 
     onUpdateNoteDone = () => {
-        this.setState({isUpdateNote:false})
+        this.setState({ isUpdateNote: false })
         this.loadNotes()
     }
 
@@ -86,8 +100,13 @@ export class KeepApp extends React.Component {
                     <KeepFilter setFilter={this.onSetFilter} />
                 </header>
                 <NoteAdd showAddedNote={this.loadNotes} />
-                <NoteList notes={this.notesForDisplay} onNoteChosen={this.onUpdateNote} onDelete={this.onDelete} />
-                {this.state.isUpdateNote && <NoteEdit note={this.state.noteToEdit} onUpdateNote={this.onUpdateNoteDone}/>}
+                <h2>Pinned Notes</h2>
+                <NoteList notes={keepService.getPinned(this.notesForDisplay)} onTodoDone={this.onTodoDone} onNoteChosen={this.onUpdateNote}
+                    onPin={this.onPin} onSetBgc={this.onSetBgc} onDelete={this.onDelete} />
+                <h2>Other Notes</h2>
+                <NoteList notes={keepService.getUnPinned(this.notesForDisplay)} onTodoDone={this.onTodoDone} onNoteChosen={this.onUpdateNote}
+                    onPin={this.onPin} onSetBgc={this.onSetBgc} onDelete={this.onDelete} />
+                {this.state.isUpdateNote && <NoteEdit note={this.state.noteToEdit} onUpdateNote={this.onUpdateNoteDone} />}
                 {/* <Switch>
                         <Route path="/pet/edit/:petId?" component={PetEdit} />
                         <Route path="/pet/:petId" component={PetDetails} />

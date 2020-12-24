@@ -3,9 +3,14 @@ import { utilService } from "../../../services/utilService.js";
 
 export const keepService = {
     query,
+    getPinned,
+    getUnPinned,
     getNoteById,
     save,
-    deleteNote
+    deleteNote,
+    pinToggle,
+    setBgc,
+    toggleTodo
 }
 
 const KEY = 'notesDB';
@@ -23,10 +28,18 @@ function query() {
     return Promise.resolve(gNotes);
 }
 
+function getPinned(notes) {
+    return notes.filter(note => note.isPinned)
+}
+function getUnPinned(notes) {
+    return notes.filter(note => !note.isPinned)
+}
+
 function getNoteById(noteId) {
     return Promise.resolve(gNotes.find(note => note.id === noteId))
 }
 function save(note) {
+    console.log('note', note)
     if (note.id) {
         return _update(note);
     } else {
@@ -60,6 +73,30 @@ function deleteNote(noteId) {
     _saveNotesToStorage();
 }
 
+function pinToggle(noteId) {
+    const notes = [...gNotes]
+    const noteToTogglePinIdx = notes.findIndex(note => note.id === noteId)
+    notes[noteToTogglePinIdx].isPinned = !notes[noteToTogglePinIdx].isPinned
+    gNotes = notes;
+    _saveNotesToStorage()
+}
+function toggleTodo(noteId, todoIdx) {
+    const notes = [...gNotes]
+    const noteToUpdateIdx = notes.findIndex(note => note.id === noteId)
+    notes[noteToUpdateIdx].info.todos[todoIdx].isDone = !notes[noteToUpdateIdx].info.todos[todoIdx].isDone
+    gNotes = notes;
+    _saveNotesToStorage()
+}
+
+function setBgc(noteId, bgc) {
+    const notes = [...gNotes]
+    const noteToUpdateIdx = notes.findIndex(note => note.id === noteId)
+    if (!notes[noteToUpdateIdx].style) notes[noteToUpdateIdx].style={} 
+    notes[noteToUpdateIdx].style = {backgroundColor:bgc}
+    gNotes = notes;
+    _saveNotesToStorage()
+}
+
 function _saveNotesToStorage() {
     storageService.save(KEY, gNotes);
 }
@@ -78,12 +115,19 @@ function _getDemoNotes() {
         {
             type: 'noteTodos',
             info: {
-                todos: [{ text: 'Todo for Dudi' }, { text: 'Todo for Ori' }]
+                todos: [
+                    { text: 'Todo for Dudi', isDone:false}, 
+                    { text: 'Todo for Ori',  isDone:false }
+                ]
+            },
+            style: {
+                backgroundColor: "#00d"
             },
             id: utilService.makeId()
         },
         {
             type: 'noteImg',
+            isPinned: true,
             info: {
                 url: 'https://rabamnetee.com/wp-content/uploads/Funny-Going-To-Hell-In-Every-Religion-Cool-Crazy-Joke-Shirt-ladies-tee.jpg',
                 title: 'My Cool shirt'

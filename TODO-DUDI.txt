@@ -13,7 +13,11 @@ Day 2
 V Render video note
 V Add attributes to notes according to spec
 V Update note
-- add note pin
-- inline styling
-- Toolbar Design and implement 
-
+V add note pin
+V inline styling
+V Toolbar Design and implement
+V color picker
+- inline edit image
+- copy note
+- focus on input. on mount, inline edit
+- fix layout by merging pinned / not pinned.

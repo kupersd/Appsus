@@ -1,18 +1,13 @@
-export function NoteTodos({ info, style, onNoteChosen, onTodoDone }) {
-    console.log('style', style)
+export function NoteTodos({ note, onNoteChosen, onTodoDone }) {
     return (
-        <section style={style} className="note-todos">
-            {info.todos.map((todo, idx) => <div key={idx} className={`${todo.isDone && 'todo-done'} flex space-between`} onInput={(ev) => { onNoteChosen(ev, idx) }}
-                contentEditable suppressContentEditableWarning={true}><p>{todo.text}</p>
-                <input onClick={(ev) => { ev.stopPropagation(); onTodoDone(idx) }} type="checkbox" /></div>)}
+        <section style={note.style} className="note-todos shadow">
+            {note.info.todos.map((todo, idx) =>
+                <div key={idx} className={`${todo.isDone && 'todo-done'} flex space-between`} onInput={(ev) => { onNoteChosen(ev, idx) }}>
+                    <p contentEditable suppressContentEditableWarning={true}>{todo.text}</p>
+                    <img className={`${!todo.isDone && 'my-active'} pointer`} onClick={()=> {onTodoDone(idx)}} src="apps/Keep/assets/img/V.png"/>    
+                </div>)}
             <img src="apps/Keep/assets/img/todo.png" />
         </section>
     )
 }
-// export function NoteTodos({ info, onNoteChosen }) {
-//     return (
-//         <section onClick={onNoteChosen} className="note-todos">
-//             {info.todos.map((todo,idx) => <div key={idx} contentEditable>{todo.text}</div>)}
-//         </section>
-//     )
-// }
+

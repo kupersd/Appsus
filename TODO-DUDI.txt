@@ -13,11 +13,29 @@ Day 2
 V Render video note
 V Add attributes to notes according to spec
 V Update note
-V add note pin
-V inline styling
+V Add note pin
+V Inline styling
 V Toolbar Design and implement
-V color picker
-- inline edit image
-- copy note
-- focus on input. on mount, inline edit
-- fix layout by merging pinned / not pinned.
+V Color picker
+V Inline edit image
+V Copy note
+V Fix layout by merging pinned / not pinned.
+V Convert videos to embed
+
+Day 3
+=========
+V Design keep header
+V Bug in Todo - two checkboxes delete the text
+V Constant width to all notes + color-picker location
+V Change icons margin
+V Change default color for new notes
+V Fix all todos from mutual CR
+V Focus on input. on mount, inline edit
+V Delete code for Edit.....
+V Basic responsivity
+- brightness of icons on bottom of note
+- SWAL if no text
+- Fix bug of presenting pinned.
+- Find UI problems
+- Integrate notes and emails
+- Think of changing that only on finish of editing save to storage

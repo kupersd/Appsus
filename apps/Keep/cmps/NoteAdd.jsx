@@ -7,31 +7,36 @@ export class NoteAdd extends React.Component {
         note: { type: 'noteText', info: {} },
         placeholder: 'What\'s on your mind...',
         inputText: '',
-        isActive: { text: true }
     };
 
+    refInput = React.createRef();
+
     componentDidMount() {
+        this.refInput.current.focus();
     }
 
     onSaveNote = (ev) => {//on submit
         ev.preventDefault();
+        const { note } = this.state
         if (!this.state.inputText) {
-            alert('Please enter something....')
-            return
+            // TODO: SWAL?
+            return 
         }
-        keepService.save(this.state.note)
+        if (note.type === 'noteVideo') {
+            note.info.url = note.info.url.replace('watch?v=', 'embed/');
+        }
+        keepService.save(note)
             .then(savedNote => {
                 console.log('Saved succesfully', savedNote);
                 this.props.showAddedNote()
-                this.setState({ note: { type: 'noteText', info: {} }, inputText: '' })
+                this.setState({ note: { type: note.type, info: {} }, inputText: '' })
             })
 
     };
 
     onInputChange = (ev) => {//on input change
         const note = { ...this.state.note };
-        const value = ev.target.value;
-        const inputText = value;
+        const inputText = ev.target.value;
         switch (note.type) {
             case 'noteText':
                 note.info = { text: inputText }
@@ -54,43 +59,37 @@ export class NoteAdd extends React.Component {
     onChooseNoteType = (noteType) => {
         const note = { ...this.state.note }
         note.type = noteType;
-        let placeholder, isActive;
+        let placeholder;
         switch (noteType) {
             case 'noteText':
                 placeholder = 'What\'s on your mind...'
-                isActive = { text: true }
                 break;
             case 'noteImg':
-                isActive = { img: true }
                 placeholder = 'Enter image URL...'
                 break;
             case 'noteVideo':
-                isActive = { video: true }
                 placeholder = 'Enter video URL...'
                 break;
             case 'noteTodos':
-                isActive = { todos: true }
                 placeholder = 'Enter comma separated list...'
                 break;
         }
-        this.setState({ note, inputText: '', placeholder, isActive })
+        this.setState({ note, inputText: '', placeholder })
     }
-
     render() {
-        const { isActive, inputText, placeholder } = this.state
+        const { inputText, placeholder, note } = this.state
         return (
             <div>
                 <form className="note-add flex space-between" onSubmit={this.onSaveNote}>
-                    <input value={inputText}
+                    <input value={inputText} ref={this.refInput}
                         placeholder={placeholder} type="text" name="inputText"
                         onChange={this.onInputChange} />
                     <div>
-                        <button type="button" className={isActive.text && 'my-active'} onClick={() => { this.onChooseNoteType('noteText') }}><img src="apps/Keep/assets/img/text.png" /></button>
-                        <button type="button" className={isActive.img && 'my-active'} onClick={() => { this.onChooseNoteType('noteImg') }}><img src="apps/Keep/assets/img/img.png" /></button>
-                        <button type="button" className={isActive.video && 'my-active'} onClick={() => { this.onChooseNoteType('noteVideo') }}><img src="apps/Keep/assets/img/youtube.png" /></button>
-                        <button type="button" className={isActive.todos && 'my-active'} onClick={() => { this.onChooseNoteType('noteTodos') }}><img src="apps/Keep/assets/img/todo.png" /></button>
-                        {/* <button type="submit" onClick={this.onSaveNote}>Add</button> */}
-                        {/* <button type="submit">{(this.state.pet.id)? 'Update' : 'Add'}</button> */}
+                        <button type="button" className={`${(note.type === 'noteText') && 'my-active'}`} onClick={() => { this.onChooseNoteType('noteText') }}><img src="apps/Keep/assets/img/text.png" /></button>
+                        <button type="button" className={`${(note.type === 'noteImg') && 'my-active'}`} onClick={() => { this.onChooseNoteType('noteImg') }}><img src="apps/Keep/assets/img/img.png" /></button>
+                        <button type="button" className={`${(note.type === 'noteVideo') && 'my-active'}`} onClick={() => { this.onChooseNoteType('noteVideo') }}><img src="apps/Keep/assets/img/youtube.png" /></button>
+                        <button type="button" className={`${(note.type === 'noteTodos') && 'my-active'}`} onClick={() => { this.onChooseNoteType('noteTodos') }}><img src="apps/Keep/assets/img/todo.png" /></button>
+
                     </div>
                 </form>
             </div>

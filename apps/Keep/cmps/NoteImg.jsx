@@ -1,9 +1,9 @@
-export function NoteImg({ info, onNoteChosen}) {
+export function NoteImg({ note, onNoteChosen }) {
     return (
-        <div className="note-img">
-            <img src={info.url} onClick={onNoteChosen} />
-            <h2>{info.title}</h2>
-            <img src="apps/Keep/assets/img/img.png"/>
+        <div style={note.style} className="note-img shadow">
+            <img src={note.info.url} />
+            <h2 contentEditable suppressContentEditableWarning={true} onInput={onNoteChosen}>{note.info.title}</h2>
+            <img src="apps/Keep/assets/img/img.png" />
         </div>
     )
 }

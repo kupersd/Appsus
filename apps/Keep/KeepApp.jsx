@@ -1,14 +1,11 @@
-import { DynamicNoteCmp } from "./cmps/DynamicNoteCmp.jsx";
 import { KeepFilter } from "./cmps/KeepFilter.jsx";
 import { NoteAdd } from "./cmps/NoteAdd.jsx";
-import { NoteEdit } from "./cmps/NoteEdit.jsx";
 import { NoteList } from "./cmps/NoteList.jsx";
 import { keepService } from "./services/keepService.js";
 
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
 
-// Simple React Component
 export class KeepApp extends React.Component {
 
     state = {
@@ -16,9 +13,7 @@ export class KeepApp extends React.Component {
         filterBy: {
             freeText: '',
             type: ''
-        },
-        noteToEdit: { type: '', info: {} },
-        isUpdateNote: false
+        }
     };
 
     componentDidMount() {
@@ -35,19 +30,26 @@ export class KeepApp extends React.Component {
         const text = ev.target.innerText
         keepService.getNoteById(noteId)
             .then(noteToEdit => {
-                if (noteToEdit.type === 'noteText') {
-                    noteToEdit.info.text = text;
-                    keepService.save(noteToEdit)
-
-                } else if (noteToEdit.type === 'noteTodos') {
-                    keepService.save(noteToEdit)
-                } else this.setState({ noteToEdit, isUpdateNote: true })
+                switch (noteToEdit.type) {
+                    case 'noteText':
+                        noteToEdit.info.text = text;
+                        keepService.save(noteToEdit)
+                        break
+                    case 'noteTodos':
+                        noteToEdit.info.todos[todoIdx].text = text;
+                        keepService.save(noteToEdit)
+                        break;
+                    case 'noteImg':
+                    case 'noteVideo':
+                        noteToEdit.info.title = text;
+                        keepService.save(noteToEdit)
+                }
             })
     }
 
     get notesForDisplay() {
         const { filterBy, notes } = this.state;
-        const notesByType = filterBy.type ? notes.filter(note => note.type === filterBy.type) : notes
+        const notesByType = (filterBy.type) ? notes.filter(note => note.type === filterBy.type) : notes
         const filterRegex = new RegExp(filterBy.freeText, 'i');
         return notesByType.filter(note => {
             switch (note.type) {
@@ -55,67 +57,67 @@ export class KeepApp extends React.Component {
                     return filterRegex.test(note.info.text)
                 case 'noteImg':
                 case 'noteVideo':
-                    return filterRegex.test(note.info.url)
+                    return filterRegex.test(note.info.title)
                 case 'noteTodos':
                     return note.info.todos.some(todo => filterRegex.test(todo.text))
             }
         });
     }
-
     onDelete = (noteId) => {
-        keepService.deleteNote(noteId)
-        this.loadNotes()
+        keepService.deleteNote(noteId).
+            then(this.loadNotes())
     }
 
     onPin = (noteId) => {
         keepService.pinToggle(noteId)
-        this.loadNotes()
+            .then(this.loadNotes())
     }
 
-    onSetBgc = (ev, noteId) => {
-        keepService.setBgc(noteId, ev.target.value)
-        this.loadNotes()
+    onSetBgc = (noteId, bgc) => {
+        keepService.setBgc(noteId, bgc)
+            .then(this.loadNotes())
+
+    }
+
+    onCopy = (noteId) => {
+        keepService.copyNote(noteId)
+            .then(this.loadNotes())
     }
 
     onTodoDone = (noteId, todoIdx) => {
         keepService.toggleTodo(noteId, todoIdx)
-        this.loadNotes()
+            .then(this.loadNotes())
+
     }
 
     onSetFilter = (filterBy) => {
-        console.log('filterBy:', filterBy);
         this.setState({ filterBy });
     }
 
-    onUpdateNoteDone = () => {
-        this.setState({ isUpdateNote: false })
-        this.loadNotes()
+    getPinned = (notes) => {
+        return notes.filter(note => note.isPinned)
+    }
+    getUnPinned = (notes) => {
+        return notes.filter(note => !note.isPinned)
     }
 
     render() {
+        const pinnedNotes = this.getPinned(this.notesForDisplay)
+        const unPinnedNotes = this.getUnPinned(this.notesForDisplay)
         return (
+            
             <section className="keep-app">
-                <header className="flex space-around mrg-bottom">
-                    <h1>Keep App</h1>
+                <header className="keep-header mrg-bottom">
+                    <h1>Miss Keep</h1>
                     <KeepFilter setFilter={this.onSetFilter} />
                 </header>
                 <NoteAdd showAddedNote={this.loadNotes} />
-                <h2>Pinned Notes</h2>
-                <NoteList notes={keepService.getPinned(this.notesForDisplay)} onTodoDone={this.onTodoDone} onNoteChosen={this.onUpdateNote}
-                    onPin={this.onPin} onSetBgc={this.onSetBgc} onDelete={this.onDelete} />
-                <h2>Other Notes</h2>
-                <NoteList notes={keepService.getUnPinned(this.notesForDisplay)} onTodoDone={this.onTodoDone} onNoteChosen={this.onUpdateNote}
-                    onPin={this.onPin} onSetBgc={this.onSetBgc} onDelete={this.onDelete} />
-                {this.state.isUpdateNote && <NoteEdit note={this.state.noteToEdit} onUpdateNote={this.onUpdateNoteDone} />}
-                {/* <Switch>
-                        <Route path="/pet/edit/:petId?" component={PetEdit} />
-                        <Route path="/pet/:petId" component={PetDetails} />
-                        <Route path="/pet" component={PetApp} />
-                        <Route path="/about" component={About} />
-                        <Route path="/survey" component={Survey} />
-                        <Route path="/keep" render = {() => return <NoteList props={kkk}/>} />
-                    </Switch> */}
-                {/* <footer className="animate__animated animate__jello">coffeerights 2020</footer> */}
+                {pinnedNotes.length && <h4>Pinned</h4>}
+                <NoteList notes={pinnedNotes} onTodoDone={this.onTodoDone} onNoteChosen={this.onUpdateNote}
+                    onPin={this.onPin} onSetBgc={this.onSetBgc} onCopy={this.onCopy} onDelete={this.onDelete} />
+                {pinnedNotes.length && <h4>Other Notes</h4>}
+                <NoteList notes={unPinnedNotes} onTodoDone={this.onTodoDone} onNoteChosen={this.onUpdateNote}
+                    onPin={this.onPin} onSetBgc={this.onSetBgc} onCopy={this.onCopy} onDelete={this.onDelete} />
             </section>
         );
     }

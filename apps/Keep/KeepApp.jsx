@@ -1,6 +1,5 @@
 import { KeepFilter } from "./cmps/KeepFilter.jsx";
 import { NoteAdd } from "./cmps/NoteAdd.jsx";
-import { NoteEdit } from "./cmps/NoteEdit.jsx";
 import { NoteList } from "./cmps/NoteList.jsx";
 import { keepService } from "./services/keepService.js";
 
@@ -14,9 +13,7 @@ export class KeepApp extends React.Component {
         filterBy: {
             freeText: '',
             type: ''
-        },
-        noteToEdit: { type: '', info: {} },
-        isUpdateNote: false
+        }
     };
 
     componentDidMount() {
@@ -97,11 +94,6 @@ export class KeepApp extends React.Component {
         this.setState({ filterBy });
     }
 
-    onUpdateNoteDone = () => {
-        this.setState({ isUpdateNote: false })
-        this.loadNotes()
-    }
-
     getPinned = (notes) => {
         return notes.filter(note => note.isPinned)
     }
@@ -126,7 +118,6 @@ export class KeepApp extends React.Component {
                 {pinnedNotes.length && <h4>Other Notes</h4>}
                 <NoteList notes={unPinnedNotes} onTodoDone={this.onTodoDone} onNoteChosen={this.onUpdateNote}
                     onPin={this.onPin} onSetBgc={this.onSetBgc} onCopy={this.onCopy} onDelete={this.onDelete} />
-                {/*     {this.state.isUpdateNote && <NoteEdit note={this.state.noteToEdit} onUpdateNote={this.onUpdateNoteDone} />} */}
             </section>
         );
     }

@@ -30,10 +30,12 @@ V Constant width to all notes + color-picker location
 V Change icons margin
 V Change default color for new notes
 V Fix all todos from mutual CR
+V Focus on input. on mount, inline edit
+V Delete code for Edit.....
+V Basic responsivity
+- brightness of icons on bottom of note
 - SWAL if no text
-- Focus on input. on mount, inline edit
 - Fix bug of presenting pinned.
-- Delete code for Edit?.....
 - Find UI problems
 - Integrate notes and emails
 - Think of changing that only on finish of editing save to storage

@@ -1,6 +1,6 @@
 export function NoteTodos({ note, onNoteChosen, onTodoDone }) {
     return (
-        <section style={note.style} className="note-todos">
+        <section style={note.style} className="note-todos shadow">
             {note.info.todos.map((todo, idx) =>
                 <div key={idx} className={`${todo.isDone && 'todo-done'} flex space-between`} onInput={(ev) => { onNoteChosen(ev, idx) }}>
                     <p contentEditable suppressContentEditableWarning={true}>{todo.text}</p>

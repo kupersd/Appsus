@@ -27,11 +27,11 @@ V css header
 
 Day #3
 ========
+V Unread on mail click
+- show date/time on list
 - REPLY!
 - sort by date
-- show date/time on list
 - Fix mailboxes (unread to section in inbox, dynamic <li> render)
-- Unread on mail click
 - CSS pre exceeds page
 - CSS Email list
 - URL Parameters

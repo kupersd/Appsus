@@ -7,6 +7,8 @@
 
 /* Components: */
 @import './cmps/AppHeader.css';
+@import './cmps/AppFooter.css';
+@import './cmps/About.css';
 
 
 /* BOOKS */
@@ -14,5 +16,10 @@
 
 /* EMAIL */
 @import './apps/email/email-app.css';
+@import './apps/email/email-compose.css';
+@import './apps/email/email-details.css';
+@import './apps/email/email-preview.css';
+@import './apps/email/email-toolbar.css';
+
 /* KEEP */
 @import './apps/keep/NoteList.css';

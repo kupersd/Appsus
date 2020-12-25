@@ -1,0 +1,30 @@
+.about-page {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.about-page p {
+    margin-inline-start: 20px;
+}
+.founders {
+    margin: 0 auto;
+}
+
+.founder {
+    text-align: center;
+}
+
+.round {
+    background-color: var(--alt-color2);
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
+    border: 2px solid var(--bold-color);
+    overflow: hidden;
+}
+
+.round img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

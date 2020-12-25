@@ -11,28 +11,24 @@ export class EmailApp extends React.Component {
 
     state = {
         emails: [],
-        myMail: '',// why?
+        myMail: '',
         unreadCount: null,
         isCompose: false,
         filterBy: {
-            isRead: null, // used?
             mailText: '',
-            currMailBox: 'all'
+            currMailBox: 'inbox'
         }
     }
 
     componentDidMount() {
-        emailService.unreadCount()
-            .then(count => this.setState({ unreadCount: count }));  // unread count needs on update
         this.loadEmails();
         emailService.myMail()
-            .then(myMail => this.setState({ myMail })); // used? isn't service enough?
+            .then(myMail => this.setState({ myMail }));
     }
 
     loadEmails = () => {
-        emailService.query().then(emails => {
-            this.setState({ emails });
-        });
+        emailService.query().then(emails => this.setState({ emails }));
+        emailService.unreadCount().then(count => this.setState({ unreadCount: count }));
     }
 
     onSetFilter = (mailText) => {   // change to search
@@ -61,10 +57,8 @@ export class EmailApp extends React.Component {
     }
 
     onToggleIsRead = (ev, emailId) => {
-        console.log(ev);
         ev.preventDefault();
-        emailService.toggleIsRead(emailId)
-            .then(this.loadEmails());
+        emailService.toggleIsRead(emailId).then(this.loadEmails());
     }
 
     onCloseMail = () => {
@@ -86,7 +80,7 @@ export class EmailApp extends React.Component {
         const emailsForDisplay = this.emailsForDisplay;
         return (
             <section className="email-app">
-                <h3>Account: {this.state.myMail}</h3>
+                <h3 className="my-account">{this.state.myMail}</h3>
                 <EmailSearch setFilter={this.onSetFilter} />
                 <div className="email-main">
                     <EmailToolbar onCompose={this.onCompose}

@@ -95,11 +95,19 @@ function _saveEmailsToStorage() {
     storageService.save(KEY, gEmails);
 }
 
+function _createEmails() {
+    gEmails = storageService.load(KEY);
+    if (!gEmails || !gEmails.length) {
+        gEmails = _getDemoEmails()
+        _saveEmailsToStorage();
+    }
+}
+
 function _getDemoEmails() {
 
     const demoEmails = [
         {
-            id: 1,
+            id: 'CDCx5',
             from: MY_MAIL,
             to: 'Dudiyahoo@nsm.com',
             cc: 'alon@misterbit.co.il',
@@ -111,7 +119,7 @@ function _getDemoEmails() {
             sentAt: 1551163530583
         },
         {
-            id: 2,
+            id: 'vKcz3',
             from: MY_MAIL,
             to: 'Dudiyahoo@nsm.com',
             cc: 'yaron@codingacademy.com',
@@ -129,11 +137,11 @@ function _getDemoEmails() {
             Nov 2 TUNE IN TEL AVIV Conference (*Day Off*)
             Nov 3 Dead Sea Safari / Jerusalem Tour (Trip Organized By TUNE IN TEL AVIV) (Half Day In Studio) 
             Nov 4 Depart- `,
-            isRead: false,
+            isRead: true,
             sentAt: 1551133930583
         },
         {
-            id: 3,
+            id: '1cXz',
             from: 'search@lycos.com',
             to: MY_MAIL,
             cc: '',
@@ -159,7 +167,7 @@ function _getDemoEmails() {
             sentAt: 1551143930583
         },
         {
-            id: 4,
+            id: '9cZx1',
             from: 'alta@vista.com',
             to: MY_MAIL,
             cc: '',
@@ -177,7 +185,7 @@ function _getDemoEmails() {
             sentAt: 1551243930583
         },
         {
-            id: 5,
+            id: 'VvsaA',
             from: 'do-not-reply@info.maccabi4u.co.il',
             fromName: 'הפועל שירותי בריאות',
             to: MY_MAIL,
@@ -190,11 +198,11 @@ function _getDemoEmails() {
              
             יש תופעות לוואי לחיסון? האם החיסון משנה את המטען הגנטי?
             כל התשובות בנושא חיסוני הקורונה 	`,
-            isRead: true,
+            isRead: false,
             sentAt: 1551243930583
         },
         {
-            id: 6,
+            id: 'vp3Ca',
             from: '<info@greeninvoice.co.il',
             fromName: 'חשבונית בצבע ירוק',
             to: MY_MAIL,
@@ -208,11 +216,11 @@ function _getDemoEmails() {
             החיבור יוצר תיקייה שבה יגובו בצורה קבועה ואוטומטית כל המסמכים שתגדירו,
             מחשבוניות, הצעות מחיר ועד דוחות תקופתיים.
             הם יחכו לכם בתיקייה כשתרצו לגשת אליהם או לשלוח אותם.`,
-            isRead: true,
+            isRead: false,
             sentAt: 1551243930583
         },
         {
-            id: 7,
+            id: 'pAckl',
             from: MY_MAIL,
             fromName: '',
             to: '',
@@ -221,19 +229,116 @@ function _getDemoEmails() {
             body: `before moving to my new apartment I think we should consider starting a new service. my thoughts are almost lorem ipsumiyot at this point,
             writing a draft email body. This sprint is nice, I hope it will go well...`,
             isRead: true,
-            sentAt: 1551243930583
+            sentAt: 0
+        },
+        {
+            id: '9cXZc',
+            from: 'google-noreply@google.com',
+            fromName: 'The Google team',
+            to: MY_MAIL,
+            cc: '',
+            subject: `Ori, finish setting up your Apple iPad`,
+            body: `Hi Ori,
+            Welcome to Google on your new Apple iPad
+            Take the final steps to set up your Apple iPad and try these official Google apps.
+            Google Photos
+            Store, organize and share all your photos and videos
+            Average rating 5 stars
+             
+            Chrome
+            Browse fast and securely on all your devices
+            Average rating 3.5 stars
+             
+            Google Drive
+            Create, share and keep all your stuff in one place `,
+            isRead: false,
+            sentAt: 1551263930583
+        },
+        {
+            id: 'P4XZc',
+            from: 'DoNot.Reply@marketing-sw.com',
+            fromName: 'תמי4‎',
+            to: MY_MAIL,
+            cc: '',
+            subject: `היי אורי, תתחדשו המשלוח מתמי4 בדרך אליכם`,
+            body: ` היי אורי,
+            תודה על הקנייה!
+            
+            אוטוטו כל המשפחה תמשיך ליהנות
+            ממים מוגזים, מרעננים וטעימים בלחיצת כפתור.
+            
+            פרטי הזמנת מכלי הגזה CO2 שלך:
+            
+            סיכום הזמנה
+            
+            כתובת למשלוח:                        
+            תאריך למשלוח:            
+              עד ל 22.12.2020
+            
+            מוצרים בהזמנה:
+            1*מיכל הגזה CO2 חד פעמי ארוז- זוג
+            1*דמי משלוח CO2
+            
+            מספר עסקה:
+            8-0000551205
+            
+            פרטי החיוב:
+            סה"כ מחיר כולל מע"מ ומשלוח - 70 ש"ח`,
+            isRead: false,
+            sentAt: 1551247930583
+        },
+        {
+            id: 'PMoZc',
+            from: 'robot2@openweathermap.org',
+            fromName: 'OWM Team',
+            to: MY_MAIL,
+            cc: '',
+            subject: `OpenWeatherMap API Instruction`,
+            body: `Dear Customer!
+
+
+            Thank you for subscribing to Free OpenWeatherMap!
+            
+            API key:
+            - Your API key is 385e6d
+            - Within the next couple of hours, it will be activated and ready to use
+            - You can later create more API keys on your account page
+            - Please, always use your API key in each API call
+            
+            Endpoint:
+            - Please, use the endpoint api.openweathermap.org for your API calls
+            - Example of API call:
+            api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=385e6db04cc
+            
+            Useful links:
+            - API documentation https://openweathermap.org/api
+            - Details of your plan https://openweathermap.org/price
+            - Please, note that 16-days daily forecast and History API are not available for Free subscribers`,
+            isRead: false,
+            sentAt: 1551847930583
+        },
+        {
+            id: '1xoZc',
+            from: 'no-reply@dropbox.com',
+            fromName: 'Dropbox',
+            to: MY_MAIL,
+            cc: '',
+            subject: `We noticed a new sign in to your Dropbox`,
+            body: `Hi Ori,
+
+            A new iPad just signed in to your Dropbox account. To help keep your account secure, let us know if this is you.
+            
+                    
+                Is this you?
+                
+            When: 	Dec 21, 2020 at 2:53 pm (IST)
+            What: 	Dropbox for iPad`,
+            isRead: false,
+            sentAt: 1551467930583
         },
 
 
     ];
     return demoEmails;
 
-}
-
-function _createEmails() {
-    gEmails = storageService.load(KEY);
-    if (!gEmails || !gEmails.length) {
-        gEmails = _getDemoEmails()
-        _saveEmailsToStorage();
-    }
 }

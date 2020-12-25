@@ -48,7 +48,7 @@ export class EmailCompose extends React.Component {
                         placeholder="Subject" type="text"
                         name="subject" onChange={this.onInputChange} />
                     <textarea value={this.state.textarea}
-                        placeholder="Message..." rows="12" cols="80"
+                        placeholder="Message..." rows="14" cols="90"
                         name="body" onChange={this.onInputChange}>
                     </textarea>
                     <div className="flex">

@@ -1,34 +1,42 @@
 import { eventBusService } from "../services/eventBusService.js";
 const { NavLink, withRouter } = ReactRouterDOM;
 
-export class Home extends React.Component {
-    state = {
-        headerStyle: {
-            color: 'gold',
-            fontSize: 15
-        }
-    }
-    // Getter function:
-    get fontSize() {
-        return this.state.headerStyle.fontSize + 'px'
-    }
-    componentDidMount() {}
-    foo = ()=>{
-        console.log('THIS', this);
-        eventBusService.emit('showMsg', `I'm listening`)
-    }
+export function Home() {
+    return (
+        <section className="about-page">
+            <h1>About Us</h1>
+            <p>
+                The story begins in November 2020. While the world is experiencing a unique, once in a century challenge, we have decided to go on a journey and become Coding-Ninjas Duo and conquer the world wide web.
+            </p>
+            <p>Our vision is to deliver Class-A products in terms of efficiancy, perfect user experience, superb design and above all - a good spirit. Come and join us - We are hiring!</p>
+            <hr />
+            <div className="founders flex space-around">
+                <div className="founder">
+                    <div className="round">
+                        <img src="assets/img/ori.png" alt=""/>
+                     </div>
+                     <div className="founder-details">
+                        <h2>Ori Weinstock</h2>
+                        <ul className="clean-list">
+                            <li>Master of UX and clean code</li>
+                            <li className="qoute bold">Creative is my middle name</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="founder">
+                    <div className="round">
+                        <img src="assets/img/dudi.png" alt=""/>
+                     </div>
+                    <div className="founder-details">
+                        <h2>Dudi Kuperstein</h2>
+                        <ul className="clean-list">
+                            <li>Master of logic and Shabbas</li>
+                            <li className="qoute bold">In god we trust</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-    render() {
-        // Destructering
-        // const color = this.state.headerStyle.color;
-        const {color} = this.state.headerStyle;
-        return (
-            <section>
-                <h2 style={{color:color, fontSize: this.fontSize}}>
-                    Home Sweet Home
-                    <button onClick={this.foo}>Listen</button>
-                </h2>
-            </section>
-        )
-    }
+        </section>
+    );
 }

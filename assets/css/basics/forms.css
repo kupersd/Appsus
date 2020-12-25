@@ -1,20 +1,19 @@
 input {
     /* background-color: azure; */
-    border:0;
+    border: none;
+    outline: none;
     padding: 5px 10px;
     margin: 2px;
 }
 
 input:focus {
+    border: none;
+    outline: none;
     transition: 0.5s;
-    /* background-color: lightseagreen; */
+    background-color: var(--secondary-color);
 }
 
 button {
     padding: 4px 10px;
     cursor: pointer;
-}
-
-button:hover {
-    color: lightseagreen;
 }

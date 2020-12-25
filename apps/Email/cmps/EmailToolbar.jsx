@@ -38,7 +38,7 @@ export class _EmailToolbar extends React.Component {
                     {mailBoxes.map(box => {
                         const addCount = (box.toLowerCase() === 'inbox') ? ` (${this.props.unreadCount})` : ''
                         const isActiveClass = (box.toLowerCase() === currMailBox) ? 'active' : ''
-                        return <li className={isActiveClass + ' fast-trans'} onClick={() => { this.setMailbox(`${box.toLowerCase()}`) }}>
+                        return <li key={box} className={isActiveClass + ' fast-trans'} onClick={() => { this.setMailbox(`${box.toLowerCase()}`) }}>
                             {box + addCount}
                         </li>
                     })

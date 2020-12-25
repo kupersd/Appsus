@@ -1,7 +1,7 @@
-export function NoteText({ info, style, onNoteChosen }) {
+export function NoteText({ note, onNoteChosen }) {
     return (
-        <div contentEditable style={style} className="note-text" onInput={onNoteChosen} suppressContentEditableWarning={true}>
-            <p>{info.text}</p>
+        <div contentEditable style={note.style} className="note-text" onInput={onNoteChosen} suppressContentEditableWarning={true}>
+            <p>{note.info.text}</p>
             <img src="apps/Keep/assets/img/text.png"/>
         </div>
     )

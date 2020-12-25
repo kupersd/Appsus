@@ -24,9 +24,16 @@ V Convert videos to embed
 
 Day 3
 =========
+V Design keep header
+V Bug in Todo - two checkboxes delete the text
+V Constant width to all notes + color-picker location
+V Change icons margin
+V Change default color for new notes
+V Fix all todos from mutual CR
+- SWAL if no text
 - Focus on input. on mount, inline edit
 - Fix bug of presenting pinned.
 - Delete code for Edit?.....
 - Find UI problems
-- Design keep header
 - Integrate notes and emails
+- Think of changing that only on finish of editing save to storage

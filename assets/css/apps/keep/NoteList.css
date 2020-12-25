@@ -1,10 +1,18 @@
-/* .keep-app {
-    position: relative;
-} */
-
+.keep-app {
+    color: rgb(47, 47, 47);
+}
+.keep-header {
+    padding: 15px;
+    background-color: lightgrey;
+    display: grid;
+    grid-template-columns: 30vw 1fr;
+    
+}
 
 .note-list {
     column-count: 3;
+    column-span: all;
+    column-width: 350px;
     margin-block-end: 30px;
 }
 
@@ -17,16 +25,20 @@
 
 .note {
     position: relative;
-    width: 300px;
+    width: 320px;
     display: inline-block;
-    --inline-margin: unset;
+    /* --inline-margin: unset; */
+    margin-inline-end: 20px;
+    margin-block-end: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
 
 }
 
 .note > img {
     position: absolute;
-    top: 10px;
-    right: 0px;
+    top: 15px;
+    right: 10px;
     width: 25px;
     filter: brightness(45%);
 }
@@ -35,9 +47,6 @@
     text-decoration: line-through;
 }
 
-.my-active img{
-    filter: brightness(50%);
-}
 
 
 .note-tool-bar {
@@ -45,20 +54,22 @@
     padding: 5px;
     position: absolute;
     gap: 5px;
-    bottom: 0;
-    right: 0;
+    bottom: 10px;
+    right: 10px;
 }
 
 .note-tool-bar img {
     margin-left: 15px;
-    width: 30px;
-    filter: brightness(50%);
+    height: 28px;
+    width: 28px;
+    filter: brightness(80%);
+    cursor: pointer;
 }
 
 .note-tool-bar button {
     margin-inline-end: 0.5rem;
 }
-.note-container:hover .note-tool-bar {
+.note:hover .note-tool-bar {
     display: flex;
 }
 
@@ -68,7 +79,7 @@
 .note-todos{
     padding: 10px;
     border-radius: 10px;
-    background-color: rgb(129, 102, 102);
+    background-color: rgb(20, 155, 20);
     font-size: 1.5em;
 }
 
@@ -86,15 +97,26 @@
     background-color: rgb(230, 211, 211);
 }
 .note-text img, 
-.note-img img > :not(:first-child), 
+.note-img > img:not(:first-child), 
 .note-video img, 
 .note-todos img {
     height: 30px;
+    filter: brightness(80%);
 }
+
+.my-active img{
+    filter: brightness(50%);
+}
+
+.note-todos img.my-active {
+    filter: brightness(40%);
+}
+
+
 .color-picker {
     position: absolute;
     z-index: 1;
-    bottom: -1px;
+    bottom: -20px;
     right:20px;
 }
 .color-picker > div {
@@ -124,7 +146,8 @@
 
 .note-add {
     margin: 5px auto;
-    max-width: 50vw;
+    max-width: 70vw;
+    padding: 10px;
     border-radius: 10px;
     background-color: #fff;
 }
@@ -132,17 +155,22 @@
 .note-add input{
     flex-grow: 1;
     height: 50px;
-    font-size: 1.2rem;  
+    font-size: 1.5rem;  
     font-weight: 700;
+    color: rgb(47, 47, 47);
 }
 .keep-filter input,select{
+    border: none;
     border-radius: 10px;
     height: 50px;
     font-size: 1.2rem;  
     font-weight: 700;
+    color: rgb(47, 47, 47);
 }
 .note-add button {
-    height: 50px;
+    height: 40px;
+    margin-inline-start: 30px;
+    margin-block-start: 10px;
     background-color: #fff;
   
 }
@@ -160,4 +188,35 @@
     transform: translateX(-300px);
     /* transform: translateY(-300px); */
 
+}
+
+.white {
+    background-color: #fff;
+} 
+.lightpink {
+    background-color: lightpink;
+} 
+.lightsalmon{
+    background-color: lightsalmon;
+} 
+.yellow{
+    background-color: yellow;
+} 
+.lightgreen{
+    background-color: lightgreen;
+} 
+.lightblue{
+    background-color: lightblue;
+} 
+.lightskyblue{
+    background-color: lightskyblue;
+} 
+.blue{
+    background-color: blue;
+} 
+.purple{
+    background-color: rgb(158, 47, 149);
+} 
+.lightgray{
+    background-color: lightgray;
 }

@@ -14,8 +14,8 @@ export class RootCmp extends React.Component {
     render() {
         return (
             <Router>
-                <section className="app">
                     <AppHeader />
+                <section className="app main-layout">
                     <Switch>
                         <Route path="/books" component={BooksApp} />
                         <Route path="/keep" component={KeepApp} />

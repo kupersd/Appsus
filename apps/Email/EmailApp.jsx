@@ -11,11 +11,11 @@ export class EmailApp extends React.Component {
 
     state = {
         emails: [],
-        myMail: '',
+        myMail: '',// why?
         unreadCount: null,
         isCompose: false,
         filterBy: {
-            isRead: null,
+            isRead: null, // used?
             mailText: '',
             currMailBox: 'all'
         }
@@ -23,10 +23,10 @@ export class EmailApp extends React.Component {
 
     componentDidMount() {
         emailService.unreadCount()
-            .then(count => this.setState({ unreadCount: count }));
+            .then(count => this.setState({ unreadCount: count }));  // unread count needs on update
         this.loadEmails();
         emailService.myMail()
-            .then(myMail => this.setState({ myMail }));
+            .then(myMail => this.setState({ myMail })); // used? isn't service enough?
     }
 
     loadEmails = () => {
@@ -35,15 +35,14 @@ export class EmailApp extends React.Component {
         });
     }
 
-    onSetFilter = (mailText) => {
+    onSetFilter = (mailText) => {   // change to search
         const filterCopy = { ...this.state.filterBy };
         filterCopy.mailText = mailText;
-        console.log(filterCopy);
         this.setState({ filterBy: filterCopy })
     }
 
     onSetMailbox = (mailBox) => {
-        const filterCopy = { ...this.state.filterBy };
+        const filterCopy = { ...this.state.filterBy };  // could combine both?
         filterCopy.currMailBox = mailBox;
         this.setState({ filterBy: filterCopy })
     }
@@ -61,9 +60,11 @@ export class EmailApp extends React.Component {
         emailService.remove(emailId).then(this.loadEmails);
     }
 
-    onToggleIsRead = (emailId) => {
+    onToggleIsRead = (ev, emailId) => {
+        console.log(ev);
+        ev.preventDefault();
         emailService.toggleIsRead(emailId)
-            .then(this.loadEmails);
+            .then(this.loadEmails());
     }
 
     onCloseMail = () => {
@@ -92,7 +93,6 @@ export class EmailApp extends React.Component {
                         onSetMailbox={this.onSetMailbox}
                         unreadCount={this.state.unreadCount}
                         currMailBox={this.state.filterBy.currMailBox} />
-                    {/* <Router> */}
                     <Switch>
                         <Route path="/email/:emailId/compose" render={() =>
                             <EmailDetails onBack={this.onCloseMail}
@@ -109,7 +109,6 @@ export class EmailApp extends React.Component {
                     <Route path="/email/compose" render={() => <EmailCompose onSend={this.onSent}
                         onCancel={this.onSent} />} />
                     {this.state.isCompose && <EmailCompose onSend={this.onSent} onCancel={this.onSent} />}
-                    {/* </Router> */}
                 </div>
             </section>
         )

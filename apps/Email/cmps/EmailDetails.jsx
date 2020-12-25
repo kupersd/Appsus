@@ -36,7 +36,7 @@ class _EmailDetails extends React.Component {
     render() {
         const { email } = this.state;
         if (!email) return <div>No mails to show...</div>
-        const strDateTime = utilService.stringifyTimestamp(email.sentAt);
+        const strDateTime = utilService.stringifyTimestamp(email.sentAt); //TODO - moment.js
         return (
             <article className="email-details">
                 <div className="email-details-top">

@@ -11,6 +11,11 @@ html, body, div, header, h1 {
     box-sizing: border-box;
 }
 
+.main-layout {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -69,6 +74,7 @@ footer {
 .flex.space-around {justify-content: space-around;}
 .flex.align-center {align-items: center;}
 .inline {display: inline;}
+.inline-block {display: inline-block;}
 .mrg-bottom { margin-bottom: 20px}
 .mrg-start {margin-inline-start: var(--inline-margin);}
 .clean-list {list-style-type: none; margin: 0; padding: 0;}
@@ -78,3 +84,4 @@ footer {
     -moz-box-shadow:    0px 3px 16px 0px rgba(50, 50, 50, 0.75);
     box-shadow:         0px 3px 16px 0px rgba(50, 50, 50, 0.75);}
 .pointer {cursor: pointer;}
+.fast-trans {transition: .3s;}

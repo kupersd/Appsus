@@ -1,4 +1,4 @@
-import { emailService } from "../services/email-service.js";
+import { emailService } from "../services/emailService.js";
 
 const { withRouter } = ReactRouterDOM;
 
@@ -10,6 +10,7 @@ class _EmailDetails extends React.Component {
 
     componentDidMount() {
         this.loadEmail();
+        console.log(this.props);
     }
 
     componentDidUpdate(prevProps) {

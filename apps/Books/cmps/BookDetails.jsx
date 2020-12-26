@@ -1,4 +1,4 @@
-import { bookService } from "../services/books-service.js";
+import { bookService } from "../services/booksService.js";
 import { AddReview } from "./BookAddReview.jsx";
 import { ListReviews } from "./BookListReviews.jsx";
 import { LongTxt } from "./LongText.jsx";

@@ -74,7 +74,7 @@ li {
 .note-tool-bar button {
     margin-inline-end: 0.5rem;
 }
-.note :hover .note-tool-bar {
+.note:hover .note-tool-bar {
     display: flex;
 }
 

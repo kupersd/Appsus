@@ -1,4 +1,4 @@
-import { emailService } from "../services/email-service.js";
+import { emailService } from "../services/emailService.js";
 
 const { withRouter } = ReactRouterDOM;
 
@@ -10,10 +10,12 @@ export class _EmailCompose extends React.Component {
             cc: '',
             subject: '',
             body: ''
-        }
+        },
+        isReply: false
     }
 
     componentDidMount() {
+        console.log('onCompose', this.props);
         const { pathname } = this.props.history.location;
         const replyToId = pathname.substr(7, 5);
         if (replyToId.length === 5) {
@@ -62,16 +64,16 @@ export class _EmailCompose extends React.Component {
                     <button onClick={this.onCancel}>X</button>
                 </div>
                 <form className="compose-form" onSubmit={this.onSendEmail}>
-                    <input value={this.state.to}
+                    <input value={this.state.email.to || ''}
                         placeholder="To" type="text"
                         name="to" onChange={this.onInputChange} />
-                    <input value={this.state.cc}
+                    <input value={this.state.email.cc || ''}
                         placeholder="Cc" type="text"
                         name="cc" onChange={this.onInputChange} />
-                    <input value={this.state.subject}
+                    <input value={this.state.email.subject || ''}
                         placeholder="Subject" type="text"
                         name="subject" onChange={this.onInputChange} />
-                    <textarea value={this.state.textarea}
+                    <textarea value={this.state.email.textarea || ''}
                         placeholder="Message..." rows="14" cols="90"
                         name="body" onChange={this.onInputChange}>
                     </textarea>

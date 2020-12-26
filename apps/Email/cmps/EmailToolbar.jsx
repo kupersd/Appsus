@@ -1,4 +1,4 @@
-import { emailService } from "../services/email-service.js";
+import { emailService } from "../services/emailService.js";
 
 const { withRouter } = ReactRouterDOM;
 
@@ -12,7 +12,6 @@ export class _EmailToolbar extends React.Component {
     }
     
     componentDidMount() {
-        console.log('Email Toolbar Loaded')
         emailService.getMailBoxes()
             .then(mailBoxes => this.setState({mailBoxes}));
     }

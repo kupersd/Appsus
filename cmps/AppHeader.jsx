@@ -1,13 +1,14 @@
 import { eventBusService } from "../services/eventBusService.js";
+import { themeService } from "../services/themeService.js";
 
 const { NavLink, withRouter } = ReactRouterDOM;
-
-
 
 class _AppHeader extends React.Component {
 
     state = {
-        msg : ''
+        msg: '',
+        theme: 1,
+        themeCount: 4
     }
 
     componentDidMount() {
@@ -15,8 +16,11 @@ class _AppHeader extends React.Component {
             this.setState({ msg });
         });
     }
-    componentWillUnmount() {
-        this.unsubscribe();
+
+    changeTheme() {
+        const nextThem = (this.state.theme >= this.state.themeCount - 1) ? 0 : this.state.theme + 1;
+        themeService.setTheme(nextThem);
+        this.setState({ theme: nextThem });
     }
     goToAbout = () => {
         this.props.history.push('/about');
@@ -32,17 +36,15 @@ class _AppHeader extends React.Component {
                     <li><NavLink to="/books">Books</NavLink></li>
                     <li><NavLink to="/email">Mail</NavLink></li>
                     <li><NavLink to="/keep">Keep</NavLink></li>
+                <li><button onClick={() => this.changeTheme(0)}>🌈</button></li>
                 </ul>
                 <div className="">
                     <h1>Appsus. by Ori &amp;&amp; Dudi</h1>
                 </div>
             </nav>
-            {/* {msg && <div className="user-msg">
-                {msg}
-            </div>} */}
+
         </header>
     }
 }
 
-//HOC - higher order component
 export const AppHeader = withRouter(_AppHeader);

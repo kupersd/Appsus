@@ -6,7 +6,7 @@ export function EmailList({ emails, onRemove, onToggleIsRead }) {
     return (
         <section className="email-list shadow fit-content">
             <div className="emails-list-top">
-                <button>Unread</button>
+                <h5>Messages</h5>
             </div>
             <div className="emails-list-row">
                 {emails.map(email => {

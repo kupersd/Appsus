@@ -3,7 +3,7 @@ import { EmailDetails } from "./cmps/EmailDetails.jsx";
 import { EmailSearch } from "./cmps/EmailSearch.jsx";
 import { EmailList } from "./cmps/EmailList.jsx";
 import { EmailToolbar } from "./cmps/EmailToolbar.jsx";
-import { emailService } from "./services/email-service.js";
+import { emailService } from "./services/emailService.js";
 
 const { Switch, Route } = ReactRouterDOM;
 
@@ -44,7 +44,7 @@ export class EmailApp extends React.Component {
     }
 
     onReply = (email) => {
-        this.props.history.push(`/email/${email.id}/compose`);
+        this.props.history.push(`/email/${email.id}/compose/${email.id}`);
         this.onCompose(null, email);    // null because of 'event'...?
     }
 

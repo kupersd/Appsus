@@ -1,4 +1,4 @@
-import { bookService } from "../services/books-service.js";
+import { bookService } from "../services/booksService.js";
 
 export function ListReviews(props) {
     console.log(props);

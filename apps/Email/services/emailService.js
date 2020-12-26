@@ -82,7 +82,7 @@ function myMail() {
 // to controller
 function toWhichFolders(email) {
     let mailBox ;
-    if (email.to === MY_MAIL && !email.isRead) mailBox = 'unread';
+    // if (email.to === MY_MAIL && !email.isRead) mailBox = 'unread';
     if (email.to === MY_MAIL) mailBox = 'inbox';
     if (email.from === MY_MAIL && email.to.length > 3) mailBox = 'sent';
     if (email.from === MY_MAIL && email.to.length <= 3) mailBox = 'drafts';
@@ -91,7 +91,7 @@ function toWhichFolders(email) {
 }
 
 function getMailBoxes() {
-    return Promise.resolve(['ALL', 'Inbox', 'Unread', 'Sent', 'Drafts']);
+    return Promise.resolve(['ALL', 'Inbox', 'Sent', 'Drafts']);
 }
 
 function _saveEmailsToStorage() {

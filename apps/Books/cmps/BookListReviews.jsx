@@ -1,7 +1,4 @@
-import { bookService } from "../services/booksService.js";
-
 export function ListReviews(props) {
-    console.log(props);
     if (!props.book.reviews || props.book.reviews.length === 0) return <div>No reviews yet. Did you read it?</div>
     const { reviews } = props.book;
     return (

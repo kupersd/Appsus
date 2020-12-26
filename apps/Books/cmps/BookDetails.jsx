@@ -1,7 +1,7 @@
 import { bookService } from "../services/booksService.js";
 import { AddReview } from "./BookAddReview.jsx";
 import { ListReviews } from "./BookListReviews.jsx";
-import { LongTxt } from "./LongText.jsx";
+import { LongText } from "./LongText.jsx";
 
 export class BookDetails extends React.Component {
 
@@ -68,7 +68,7 @@ export class BookDetails extends React.Component {
                     {this.state.releaseDateNotes && <span className="mrg-start">{this.state.releaseDateNotes}</span>}
                 </div>
                 <img src={book.thumbnail} />
-                <LongTxt text={book.description} isLongTxtShown={this.state.isLongTxtShown} readMore={this.onReadMore} />
+                <LongText text={book.description} isLongTxtShown={this.state.isLongTxtShown} readMore={this.onReadMore} />
                 {isOnSale && <span className="sale">On Sale!</span>}
                 <div className="book-tags-inv flex">
                     <BookCategories book={book} />

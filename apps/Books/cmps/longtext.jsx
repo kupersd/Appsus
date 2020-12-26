@@ -1,4 +1,4 @@
-export function LongTxt({ text, isLongTxtShown, readMore }) {
+export function LongText({ text, isLongTxtShown, readMore }) {
     const maxChars = 100;
     if (isLongTxtShown) return <p>{ text }</p>;
     if (text.length <= maxChars) return <p>{text}</p>;

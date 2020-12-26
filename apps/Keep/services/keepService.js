@@ -114,47 +114,6 @@ function _getDemoNotes() {
 
     const demoNotes = [
         {
-            type: 'noteText',
-            isPinned: true,
-            info: {
-                text: 'Text Note - Got to love dynamic components'
-            },
-            id: utilService.makeId()
-        },
-        {
-            type: 'noteTodos',
-            isPinned: true,
-            info: {
-                todos: [
-                    { text: 'Todo for Dudi', isDone:false}, 
-                    { text: 'Todo for Ori',  isDone:false }
-                ]
-            },
-            style: {
-                backgroundColor: 'lightsalmon'
-            },
-            id: utilService.makeId()
-        },
-        {
-            type: 'noteImg',
-            isPinned: true,
-            info: {
-                url: 'https://rabamnetee.com/wp-content/uploads/Funny-Going-To-Hell-In-Every-Religion-Cool-Crazy-Joke-Shirt-ladies-tee.jpg',
-                title: 'My Cool shirt'
-            },
-            id: utilService.makeId()
-        },
-        {
-            
-            type: 'noteImg',
-            isPinned: true,
-            info: {
-                url: 'https://images.pexels.com/photos/41315/africa-african-animal-cat-41315.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-                title: 'Great Lion'
-            },
-            id: utilService.makeId()
-        },
-        {
             type: 'noteVideo',
             info: {
                 url: 'https://www.youtube.com/embed/I3qvi4wHNns',
@@ -185,7 +144,48 @@ function _getDemoNotes() {
                 backgroundColor: 'lightgreen'
             },
             id: utilService.makeId()
+        },
+        {
+            type: 'noteText',
+            isPinned: true,
+            info: {
+                text: 'Text Note - Got to love dynamic components'
+            },
+            id: utilService.makeId()
+        },
+        {
+            type: 'noteTodos',
+            isPinned: true,
+            info: {
+                todos: [
+                    { text: 'Todo for Dudi', isDone:false}, 
+                    { text: 'Todo for Ori',  isDone:false }
+                ]
+            },
+            style: {
+                backgroundColor: 'lightsalmon'
+            },
+            id: utilService.makeId()
+        },
+        {
+            type: 'noteImg',
+            info: {
+                url: 'https://rabamnetee.com/wp-content/uploads/Funny-Going-To-Hell-In-Every-Religion-Cool-Crazy-Joke-Shirt-ladies-tee.jpg',
+                title: 'My Cool shirt'
+            },
+            id: utilService.makeId()
+        },
+        {
+            
+            type: 'noteImg',
+            isPinned: true,
+            info: {
+                url: 'https://images.pexels.com/photos/41315/africa-african-animal-cat-41315.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                title: 'Great Lion'
+            },
+            id: utilService.makeId()
         }
+        
     ]
     return demoNotes;
 

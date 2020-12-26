@@ -15,7 +15,7 @@
 .note-list {
     column-count: 3;
     column-span: all;
-    column-width: 350px;
+    /* column-width: 300px; */
 }
 
 .note-container {
@@ -25,15 +25,18 @@
     margin-bottom: 20px;
 }
 
+li {
+}
 .note {
     position: relative;
+    margin: 2px;
     width: 320px;
     display: inline-block;
     /* --inline-margin: unset; */
-    margin-inline-end: 20px;
-    margin-block-end: 20px;
+    /* margin-inline-end: 20px;
+    margin-block-end: 20px; */
     padding: 10px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 
 }
 
@@ -71,7 +74,7 @@
 .note-tool-bar button {
     margin-inline-end: 0.5rem;
 }
-.note:hover .note-tool-bar {
+.note :hover .note-tool-bar {
     display: flex;
 }
 
@@ -103,7 +106,7 @@
 .note-video img, 
 .note-todos img {
     height: 30px;
-    filter: brightness(80%);
+    filter: brightness(50%);
 }
 
 .my-active img{

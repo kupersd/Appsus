@@ -15,11 +15,12 @@
 @import './apps/books/BooksList.css';
 
 /* EMAIL */
-@import './apps/email/email-app.css';
-@import './apps/email/email-compose.css';
-@import './apps/email/email-details.css';
-@import './apps/email/email-preview.css';
-@import './apps/email/email-toolbar.css';
+@import './apps/email/EmailCompose.css';
+@import './apps/email/EmailDetails.css';
+@import './apps/email/EmailPreview.css';
+@import './apps/email/EmailList.css';
+@import './apps/email/EmailToolbar.css';
+@import './apps/email/EmailApp.css';
 
 /* KEEP */
 @import './apps/keep/NoteList.css';

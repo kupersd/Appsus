@@ -1,0 +1,40 @@
+.email-main {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 15px;
+    margin: 0 15px;
+}
+.email-search {
+    margin: 20px auto;
+    width: 50vw;
+}
+.email-search input {
+    height: 36px;
+    width: 100%;
+}
+
+@media (max-width: 760px) {
+    .app-header h1 {
+        display: none;
+    }
+}
+@media (max-width: 600px) {
+    body {
+    }
+    .email-details .email-details-top button {
+        /* background-color: #fff; */
+        font-size: 0.8em;
+        padding: 5px 8px;
+        
+    }
+    
+    .email-toolbar {
+        display: none;
+    }
+    .email-details {
+        grid-column: 1 / 3;
+    }
+    .email-list {
+        grid-column: 1 / 3;
+    }
+}

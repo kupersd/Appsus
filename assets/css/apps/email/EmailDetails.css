@@ -17,6 +17,11 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.9em;
 }
+
+.email-details-top button:last-of-type
+ {
+    margin-inline-end: 0px;
+}
 .email-details button {
     background-color: var(--bold-color);
     color: var(--secondary-color);

@@ -47,3 +47,13 @@ ALON MEETING Thrusday Evening:
 - CSS
 
 Q's to Alon:
+
+- Unread
+- REPLY
+- pass from note 
+- toggle theme
+- hamburger
+- books image preview on list
+- cap css components
+
+- fix dudi's Design

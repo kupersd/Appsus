@@ -77,6 +77,7 @@ function myMail() {
     return Promise.resolve(MY_MAIL);
 }
 
+// to controller
 function toWhichFolders(email) {
     let mailBox ;
     if (email.to === MY_MAIL) mailBox = 'inbox';

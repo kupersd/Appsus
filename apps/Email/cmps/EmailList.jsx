@@ -4,7 +4,7 @@ export function EmailList({ emails, onRemove, onToggleIsRead, onFilterUnread }) 
     if (!emails || emails.length === 0) return <div>No emails to show...</div>;
 
     return (
-        <section className="shadow fit-content">
+        <section className="email-list shadow fit-content">
             <div className="emails-list-top">
                 Inbox
                 <button>Unread</button>

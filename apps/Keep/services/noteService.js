@@ -120,6 +120,9 @@ function _getDemoNotes() {
                 url: 'https://www.youtube.com/embed/I3qvi4wHNns',
                 title: 'my first Video'
             },
+            style: {
+                backgroundColor: 'lightpink'
+            },
             id: utilService.makeId()
         },
         {
@@ -152,6 +155,9 @@ function _getDemoNotes() {
             info: {
                 text: 'Text Note - Got to love dynamic components'
             },
+            style: {
+                backgroundColor: 'lightgrey'
+            },
             id: utilService.makeId()
         },
         {
@@ -173,6 +179,9 @@ function _getDemoNotes() {
             info: {
                 url: 'https://rabamnetee.com/wp-content/uploads/Funny-Going-To-Hell-In-Every-Religion-Cool-Crazy-Joke-Shirt-ladies-tee.jpg',
                 title: 'My Cool shirt'
+            },
+            style: {
+                backgroundColor: 'lightsalmon'
             },
             id: utilService.makeId()
         },

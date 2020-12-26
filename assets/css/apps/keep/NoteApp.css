@@ -18,16 +18,7 @@
 .note-todos img.my-active {
     filter: brightness(40%);
 }
-/* .note-edit {
-    position: absolute;
-    max-width: 30vw;
-    right: 300px;
-    bottom: 100px;
-    background-color: rgb(187, 168, 168);
-    transform: translateX(-300px); */
-    /* transform: translateY(-300px); */
 
-/* } */
 @media (max-width: 950px) {
     .keep-app h4 {
         margin-inline-start: 5vw;
@@ -57,6 +48,12 @@
     }
 }
 @media (max-width: 720px) {
+    .keep-filter > input  {
+        width: 250px;
+    }
+    .keep-filter > select  {
+        width: 50px;
+    }
     .note-add{
         flex-direction: column;
     }

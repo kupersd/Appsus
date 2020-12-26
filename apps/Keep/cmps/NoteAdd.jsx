@@ -80,7 +80,7 @@ export class NoteAdd extends React.Component {
         const { inputText, placeholder, note } = this.state
         return (
             <div>
-                <form className="note-add flex space-between" onSubmit={this.onSaveNote}>
+                <form className="note-add flex space-between shadow" onSubmit={this.onSaveNote}>
                     <input value={inputText} ref={this.refInput}
                         placeholder={placeholder} type="text" name="inputText"
                         onChange={this.onInputChange} />

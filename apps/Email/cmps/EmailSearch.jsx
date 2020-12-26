@@ -9,20 +9,22 @@ export class EmailSearch extends React.Component {
 
     handleChange = (ev) => {
         const callback = () => {
-            this.props.setFilter(this.state.filterBy.mailText);
+            this.props.setFilter('mailText', this.state.filterBy.mailText);
         };
 
         const filterBy = { ...this.state.filterBy }
         filterBy[ev.target.name] = ev.target.value;
-        this.setState({ filterBy: {mailText: ev.target.value} }, callback);
+        this.setState({ filterBy: { mailText: ev.target.value } }, callback);
     }
 
     render() {
-        return <section className="email-search">
+        return <section className="email-search shadow flex space-between">
+            <button onClick={this.props.toggleMenu} className="hamburger">=</button>
             <input type="text" name="mailText"
                 value={this.state.filterBy.mailText}
                 placeholder="Search mail..."
-                onChange={this.handleChange}/>
+                onChange={this.handleChange} />
+
         </section>
     }
 }

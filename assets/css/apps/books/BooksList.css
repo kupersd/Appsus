@@ -47,9 +47,6 @@ h4 {
     margin: 0px var(--inline-margin) 30px;
 }
 
-input {
-    margin-inline-end: 10px;
-}
 input[type="range"] {
     height: 0;
 }
@@ -75,21 +72,38 @@ input[type="range"] {
     flex-direction: column;
     text-transform: capitalize;
     margin: var(--inline-margin);
-    padding: 5px;
     background-color: var(--primary-color);
     color: var(--secondary-color);
-    height: 25vh;
-    width: 16vw;
+    height: 30vh;
+    width: 20vw;
     min-width: 125px;
 }
 .book-item.selected {
     background-color: rgba(0, 0, 0, 0.9);
 }
 .book-item span {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    padding: 10px;
     font-size: 0.8rem;
     align-self:flex-end;
 }
+.book-item h3 {
+    display: inline-block;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    padding: 10px;
+    margin: 0 auto;
+}
+.book-item img {
+    position: absolute;
 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .book-details {
     position: relative;
     margin: var(--inline-margin);
@@ -184,8 +198,9 @@ input[type="range"] {
     border: 2px solid var(--primary-color);
 }
 .btn-del {
+    z-index: 2;
     transition: .2s;
-    border: 1px solid var(--secondary-color);
+    /* border: 1px solid var(--secondary-color); */
     background-color: var(--primary-color);
     color: var(--secondary-color);
     position: absolute;

@@ -1,0 +1,36 @@
+.email-details {
+    grid-column: 2 / 3;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 20px;
+}
+.email-details h2 {
+    margin: 10px 0;
+}
+.email-details h6 {
+    margin: 5px 0;
+    font-size: 0.8em;
+    font-weight: normal;
+}
+.email-details pre {
+    white-space: pre-wrap;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+}
+
+.email-details-top button:last-of-type
+ {
+    margin-inline-end: 0px;
+}
+.email-details button {
+    background-color: var(--bold-color);
+    color: var(--secondary-color);
+    font-size: 1em;
+    padding: 7px 10px;
+    margin-inline-end: 12px;
+    margin-bottom: 10px;
+    transition: .3s;
+}
+.email-details button:hover {
+    background-color: var(--bold-color-hover);
+}

@@ -4,7 +4,7 @@ const { NavLink, withRouter } = ReactRouterDOM;
 
 
 
-class _AppHeader extends React.Component {
+class _AppFooter extends React.Component {
 
     state = {
         msg : ''
@@ -24,25 +24,25 @@ class _AppHeader extends React.Component {
 
     render() {
         const {msg} = this.state; 
-        return <header className="app-header">
-            <nav className="flex space-between align-center main-layout">
-                <ul className="">
-                    <li><NavLink exact to="/">Home</NavLink></li>
+        return <header className="app-footer">
+            <nav className="">
+                <ul>
+                    {/* <li><NavLink exact to="/">Home</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
                     <li><NavLink to="/books">Books</NavLink></li>
                     <li><NavLink to="/email">Mail</NavLink></li>
-                    <li><NavLink to="/keep">Keep</NavLink></li>
+                    <li><NavLink to="/keep">Keep</NavLink></li> */}
                 </ul>
                 <div className="">
-                    <h1>Appsus. by Ori &amp;&amp; Dudi</h1>
+                    <h2>All rights reserved &amp; All lights reversed &copy;</h2>
                 </div>
             </nav>
-            {/* {msg && <div className="user-msg">
+            {msg && <div className="user-msg">
                 {msg}
-            </div>} */}
+            </div>}
         </header>
     }
 }
 
 //HOC - higher order component
-export const AppHeader = withRouter(_AppHeader);
+export const AppFooter = withRouter(_AppFooter);

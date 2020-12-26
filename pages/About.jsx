@@ -1,30 +1,38 @@
-const { Route, Switch, NavLink } = ReactRouterDOM;
-
 export function About() {
     return (
         <section className="about-page">
             <h1>About Us</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem unde officia nobis quisquam similique maiores, impedit voluptates, deleniti sed recusandae aspernatur at dicta fugit perferendis asperiores eos dignissimos cupiditate adipisci.</p>
-            <hr/>
-            <nav>
-                <NavLink to="/about/secret">Secret content</NavLink>
-                |
-                <NavLink to="/about/stam">Not a secret</NavLink>
-            </nav>
-
-            <Switch>
-                <Route component={AboutSecret} path="/about/secret" />
-                <Route component={NotSoSecret} path="/about/stam" />
-            </Switch>
-            
+            <p>
+                The story begins in November 2020. While the world is experiencing a unique, once in a century challenge, we have decided to go on a journey and become Coding-Ninjas Duo and conquer the world wide web.
+            </p>
+            <p>Our vision is to deliver Class-A products in terms of efficiency, perfect user experience, superb design and above all - a good spirit. Come and join us - We are hiring!</p>
+            <hr />
+            <div className="founders flex space-around">
+                <div className="founder">
+                    <div className="round">
+                        <img src="assets/img/Ori.png" alt=""/>
+                     </div>
+                     <div className="founder-details">
+                        <h2>Ori Weinstock</h2>
+                        <ul className="clean-list">
+                            <li>Master of UX and clean code</li>
+                            <li className="qoute bold">Creative is my middle name</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="founder">
+                    <div className="round">
+                        <img src="assets/img/Dudi.png" alt=""/>
+                     </div>
+                    <div className="founder-details">
+                        <h2>Dudi Kuperstein</h2>
+                        <ul className="clean-list">
+                            <li>Master of logic and Shabbas</li>
+                            <li className="qoute bold">In god we trust</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </section>
     );
-}
-
-function AboutSecret() {
-    return <h1>TOP-SECRET</h1>;
-}
-
-function NotSoSecret() {
-    return <h1>Tell anyone! </h1>;
 }

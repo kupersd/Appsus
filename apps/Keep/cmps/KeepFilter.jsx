@@ -17,7 +17,7 @@ export class KeepFilter extends React.Component {
     };
 
     render() {
-        return <section className="keep-filter">
+        return <section className="keep-filter shadow flex">
             <input type="text" name="freeText"
                 value={this.state.filterBy.freeText}
                 placeholder="Search"

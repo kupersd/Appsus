@@ -1,6 +1,8 @@
 import { emailService } from "../services/email-service.js";
 
-export class EmailCompose extends React.Component {
+const { withRouter } = ReactRouterDOM;
+
+export class _EmailCompose extends React.Component {
 
     state = {
         email: {
@@ -9,6 +11,28 @@ export class EmailCompose extends React.Component {
             subject: '',
             body: ''
         }
+    }
+
+    componentDidMount() {
+        const { pathname } = this.props.history.location;
+        const replyToId = pathname.substr(7, 5);
+        if (replyToId.length === 5) {
+            console.log('Replying to mail:', replyToId);
+            emailService.getById(replyToId).then(this.fillReplyToMail)
+        }
+    }
+
+    fillReplyToMail = (replyEmail) => {
+        console.log(replyEmail)
+        const email = {
+            to: replyEmail.from,
+            from: 'ori',
+            subject: 'RE: ' + replyEmail.subject,
+            body: 'Here is my answer'
+        }
+        console.log(email)
+        this.setState({ email });
+        console.log('state after reply:', this.state)
     }
 
     onInputChange = (ev) => {
@@ -28,7 +52,7 @@ export class EmailCompose extends React.Component {
     onCancel = () => {
         this.props.onCancel();
     }
-    
+
     render() {
         return (
             <section className="email-compose shadow">
@@ -48,7 +72,7 @@ export class EmailCompose extends React.Component {
                         placeholder="Subject" type="text"
                         name="subject" onChange={this.onInputChange} />
                     <textarea value={this.state.textarea}
-                        placeholder="Message..." rows="12" cols="80"
+                        placeholder="Message..." rows="14" cols="90"
                         name="body" onChange={this.onInputChange}>
                     </textarea>
                     <div className="flex">
@@ -60,3 +84,4 @@ export class EmailCompose extends React.Component {
         )
     }
 }
+export const EmailCompose = withRouter(_EmailCompose);

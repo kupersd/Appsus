@@ -1,8 +1,5 @@
-import { AppHeader } from './cmps/app-header.jsx';
-import { BookDetails } from './cmps/book-details.jsx';
-import { About } from './pages/about.jsx';
-import { BooksList } from './pages/BooksList.jsx'
-import { Home } from './pages/home.jsx';
+import { BookDetails } from './cmps/BookDetails.jsx';
+import { BooksList } from './pages/BookApp.jsx'
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
 

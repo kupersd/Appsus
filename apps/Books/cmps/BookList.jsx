@@ -1,4 +1,4 @@
-import { BookPreview } from "./book-preview.jsx"
+import { BookPreview } from "./BookPreview.jsx"
 
 export function BookList({ books }) {
     return (

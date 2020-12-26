@@ -18,7 +18,7 @@ export class BookFilter extends React.Component {
     }
 
     render() {
-        return <section className="book-filter">
+        return <section className="book-filter shadow">
             <label>Title:</label>
             <input type="text" name="title"
                 value={this.state.title}

@@ -25,20 +25,37 @@ V Design search/bar on top
 V Dynamic mailboxes render + Active class
 V css header
 
-Day #3
-========
+Day #3/4
+==========
+V Unread on mail click
+V show date/time on list
+V CSS Email list
+V sort by date
+V main page layout fixes (footer)
+V color pallete
+V CSS pre exceeds page
+V hamburger
+V fixed auto read on details
+- focus on compose
 - REPLY!
-- sort by date
-- show date/time on list
 - Fix mailboxes (unread to section in inbox, dynamic <li> render)
-- Unread on mail click
-- CSS pre exceeds page
-- CSS Email list
 - URL Parameters
 - Export to note button
+- 'Screen' for darken bg / click to toggle
 
 
 
 ALON MEETING Thrusday Evening:
 ================================
 - CSS
+
+Q's to Alon:
+
+- Unread
+- REPLY
+- pass from note 
+- toggle theme
+- books image preview on list
+- cap css components
+
+- fix dudi's Design

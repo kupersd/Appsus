@@ -1,7 +1,7 @@
 import { bookService } from "../services/books-service.js";
-import { AddReview } from "./book-add-review.jsx";
-import { ListReviews } from "./book-list-reviews.jsx";
-import { LongTxt } from "./longtext.jsx";
+import { AddReview } from "./BookAddReview.jsx";
+import { ListReviews } from "./BookListReviews.jsx";
+import { LongTxt } from "./LongText.jsx";
 
 export class BookDetails extends React.Component {
 
@@ -60,7 +60,7 @@ export class BookDetails extends React.Component {
 
         return (
             <section>
-                <section className="book-details">
+                <section className="book-details shadow">
                 <h2>{book && book.title}</h2>
                 <h4>{book && book.authors[0]}</h4>
                 <div className="book-tags">

@@ -1,5 +1,5 @@
 .email-compose {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     background-color: var(--secondary-color);
     bottom: 0px;

@@ -41,6 +41,7 @@ html, body, div, header, h1 {
 }
 .main-layout {
     max-width: 1000px;
+    min-width: 300px;
     margin: 0 auto;
 }
 .app {

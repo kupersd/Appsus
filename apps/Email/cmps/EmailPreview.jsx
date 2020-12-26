@@ -4,6 +4,7 @@ export function EmailPreview({ email, onRemove, onToggleIsRead }) {
     const isReadClass = (email.isRead) ? 'read' : '';
     const isReadIcon = (email.isRead) ? 'env-open' : 'env-closed';
     const dateTime = moment(email.sentAt).format('DD/MM')
+    
     return (
         <Link to={`/email/${email.id}`}>
             <div className="email-preview fast-trans">

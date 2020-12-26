@@ -5,12 +5,16 @@
     margin: 0 15px;
 }
 .email-search {
-    margin: 20px auto;
+    grid-column: 2 / 3;
+    /* margin: 20px auto; */
     width: 50vw;
 }
 .email-search input {
     height: 36px;
     width: 100%;
+}
+.hamburger {
+    display: none;
 }
 
 @media (max-width: 760px) {
@@ -19,17 +23,36 @@
     }
 }
 @media (max-width: 600px) {
-    body {
-    }
+
     .email-details .email-details-top button {
-        /* background-color: #fff; */
         font-size: 0.8em;
         padding: 5px 8px;
         
     }
     
+    .email-search {
+        grid-column: 1 / 3;
+        width: 100%;
+    }
+    .hamburger {
+        display: inline;
+    }
     .email-toolbar {
-        display: none;
+        position: absolute;
+        top: 120px;
+        transition: .6s;
+        left: 0;
+        transform: translateX(-100%);
+        width: 60vw;
+        font-size: 1.4rem;
+    }
+    .email-toolbar button {
+        font-size: 1.8rem;
+        
+    }
+    .email-app.menu-open .email-toolbar {
+        left: initial;
+        transform: translateX(0%);
     }
     .email-details {
         grid-column: 1 / 3;
@@ -37,4 +60,24 @@
     .email-list {
         grid-column: 1 / 3;
     }
+    
+    .email-preview {
+        grid-template-columns: 1fr;
+    }
+    .email-preview .subj-snip,
+    .email-preview .from {
+        display: block;
+    }
+    .email-preview .right-side {
+        position: absolute;
+        right: 25px;
+    }
+
+    .email-compose {
+        right: 5px;
+        left: 5px;
+        bottom: 380px;
+        top: 100px;
+    }
+
 }

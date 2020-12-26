@@ -1,40 +1,47 @@
 import { eventBusService } from "../services/eventBusService.js";
-const { NavLink, withRouter } = ReactRouterDOM;
+const { Link, withRouter } = ReactRouterDOM;
 
 export function Home() {
     return (
         <section className="about-page">
-            <h1>About Us</h1>
-            <p>
-                The story begins in November 2020. While the world is experiencing a unique, once in a century challenge, we have decided to go on a journey and become Coding-Ninjas Duo and conquer the world wide web.
-            </p>
-            <p>Our vision is to deliver Class-A products in terms of efficiancy, perfect user experience, superb design and above all - a good spirit. Come and join us - We are hiring!</p>
-            <hr />
+            <div className="flex space-around bold mrg-bottom">
+
+                <h1>App Sus</h1>
+                <p>
+                    The 'not-so-new' way to send and receive mail, and to save notes.
+                </p>
+            </div>
+            {/* <h3>Choose your app and have fun</h3> */}
+            <hr className="mrg-bottom" />
             <div className="founders flex space-around">
-                <div className="founder">
-                    <div className="round">
-                        <img src="assets/img/ori.png" alt=""/>
-                     </div>
-                     <div className="founder-details">
-                        <h2>Ori Weinstock</h2>
-                        <ul className="clean-list">
-                            <li>Master of UX and clean code</li>
-                            <li className="qoute bold">Creative is my middle name</li>
-                        </ul>
+                <Link to="/email">
+                    <div className="founder">
+                        <div className="round">
+                            <img src="assets/img/letter.png" alt="" />
+                        </div>
+                        <div className="founder-details">
+                            <h2>Mail.js</h2>
+                            <ul className="clean-list">
+                                <li>Send and Receive</li>
+                                <li className="qoute bold">Or is it Respon-ceive?</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div className="founder">
-                    <div className="round">
-                        <img src="assets/img/dudi.png" alt=""/>
-                     </div>
-                    <div className="founder-details">
-                        <h2>Dudi Kuperstein</h2>
-                        <ul className="clean-list">
-                            <li>Master of logic and Shabbas</li>
-                            <li className="qoute bold">In god we trust</li>
-                        </ul>
+                </Link>
+                <Link to="/leep">
+                    <div className="founder">
+                        <div className="round">
+                            <img src="assets/img/note.png" alt="" />
+                        </div>
+                        <div className="founder-details">
+                            <h2>Notes.js</h2>
+                            <ul className="clean-list">
+                                <li>Post it, Post that</li>
+                                <li className="qoute bold">What can I keep for you?</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
 
         </section>

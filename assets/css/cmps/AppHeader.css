@@ -1,6 +1,7 @@
 .app-header {
     background-color: var(--secondary-color);
     color: var(--primary-color);
+    margin-bottom: 30px;
 }
 
 .app-header h1 {

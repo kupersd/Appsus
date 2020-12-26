@@ -11,7 +11,7 @@ export const emailService = {
     getNextPrev,
     getMailBoxes,
     toWhichFolders,
-    unreadCount
+    getUnreadCount
 }
 
 const KEY = 'emailsDB';
@@ -55,17 +55,19 @@ function remove(emailId) {
     return Promise.resolve();
 }
 
-function toggleIsRead(emailId) {
+function toggleIsRead(emailId, isForceRead = null) {
     const emailCopy = gEmails.find(email => email.id == emailId);
     const emailsCopy = [...gEmails];
     const emailCopyIdx = emailsCopy.findIndex(email => emailCopy.id === email.id);
     emailsCopy[emailCopyIdx].isRead = !emailsCopy[emailCopyIdx].isRead;
+
+    if (isForceRead) emailsCopy[emailCopyIdx].isRead = true;
     gEmails = emailsCopy;
     _saveEmailsToStorage();
     return Promise.resolve();
 }
 
-function unreadCount() {
+function getUnreadCount() {
     let count = 0;
     gEmails.forEach(email => {
         if (!email.isRead) count ++
@@ -80,8 +82,8 @@ function myMail() {
 // to controller
 function toWhichFolders(email) {
     let mailBox ;
+    if (email.to === MY_MAIL && !email.isRead) mailBox = 'unread';
     if (email.to === MY_MAIL) mailBox = 'inbox';
-    // if (email.to === MY_MAIL && !email.isRead) mailBox = 'unread';
     if (email.from === MY_MAIL && email.to.length > 3) mailBox = 'sent';
     if (email.from === MY_MAIL && email.to.length <= 3) mailBox = 'drafts';
 

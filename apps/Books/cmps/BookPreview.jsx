@@ -4,11 +4,12 @@ export function BookPreview({ book }) {
 
     return (
         <Link to={`/books/book/${book.id}`}>
-            <article className="book-item flex space-between" key={book.id}>
+            <article className="book-item flex space-between shadow" key={book.id}>
                 <h3>
                     {book.title}
                 </h3>
-                <button className="btn-del" onClick={(ev) => {
+                <img src={`${book.thumbnail}`} alt=""/>
+                <button className="btn-del shadow" onClick={(ev) => {
                     ev.preventDefault()
                 }}>X
                     </button>

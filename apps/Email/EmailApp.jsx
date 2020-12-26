@@ -17,8 +17,9 @@ export class EmailApp extends React.Component {
         filterBy: {
             mailText: '',
             currMailBox: 'inbox',
-            isRead: false
-        }
+            isUnread: true
+        },
+        isMenuOpen: false
     }
 
     componentDidMount() {
@@ -29,17 +30,22 @@ export class EmailApp extends React.Component {
 
     loadEmails = () => {
         emailService.query().then(emails => this.setState({ emails }));
-        emailService.unreadCount().then(count => this.setState({ unreadCount: count }));
+        emailService.getUnreadCount().then(count => this.setState({ unreadCount: count }));
     }
 
     onSetFilter = (key, value) => {
-        console.log(key, value)
         const filterCopy = { ...this.state.filterBy };
         filterCopy[key] = value;
         this.setState({ filterBy: filterCopy })
     }
-    onCompose = () => {
+
+    onCompose = (ev, replyEmail = null) => {    // I get ev.. ?
         this.setState({ isCompose: true });
+    }
+
+    onReply = (email) => {
+        this.props.history.push(`/email/${email.id}/compose`);
+        this.onCompose(null, email);    // null because of 'event'...?
     }
 
     onSent = () => {
@@ -53,13 +59,19 @@ export class EmailApp extends React.Component {
         this.props.history.push('/email');
     }
 
-    onToggleIsRead = (ev, emailId) => {
-        ev.preventDefault();
-        emailService.toggleIsRead(emailId).then(this.loadEmails());
+    onToggleIsRead = (ev, emailId, isForceRead) => { // isForce: not toggle, but set as read
+        if (ev) ev.preventDefault();                 // could be 'clickless' (email details)
+        emailService.toggleIsRead(emailId, isForceRead).then(this.loadEmails());
     }
 
     onCloseMail = () => {
         this.props.history.push('/email');
+    }
+
+    toggleMenu = () => {
+        console.log('toggeling menu');
+        const toggleBool = !this.state.isMenuOpen
+        this.setState({ isMenuOpen: toggleBool })
     }
 
     get emailsForDisplay() {
@@ -73,16 +85,24 @@ export class EmailApp extends React.Component {
                     this.state.filterBy.currMailBox === 'all'))
         });
 
+        if (filterBy.currMailBox === 'inbox' && filterBy.isUnread === true) {
+            emailsToShow.filter(email => {
+                return email.isRead === false
+            })
+        }
         emailsToShow.sort((email1, email2) => email2.sentAt - email1.sentAt)
         return emailsToShow;
     }
 
     render() {
         const emailsForDisplay = this.emailsForDisplay;
+        const { isMenuOpen } = this.state
+        const isMenuOpenClass = (isMenuOpen) ? 'menu-open' : '';
+
         return (
-            <section className="email-app">
-                <EmailSearch setFilter2={this.onSetFilter} />
+            <section className={'email-app ' + isMenuOpenClass}>
                 <div className="email-main">
+                    <EmailSearch setFilter={this.onSetFilter} toggleMenu={this.toggleMenu} />
                     <EmailToolbar onCompose={this.onCompose}
                         onSetMailbox={this.onSetMailbox}
                         onSetFilter={this.onSetFilter}
@@ -91,13 +111,18 @@ export class EmailApp extends React.Component {
                     <Switch>
                         <Route path="/email/:emailId/compose" render={() =>
                             <EmailDetails onBack={this.onCloseMail}
-                            onRemove={this.onRemove} />} />
-                        <Route path="/email/compose" render={() => <EmailList emails={emailsForDisplay}
-                            onRemove={this.onRemove} onToggleIsRead={this.onToggleIsRead} />} />
-
+                                onRemove={this.onRemove}
+                                onToggleIsRead={this.onToggleIsRead}
+                                onReply={this.onReply} />} />
+                        <Route path="/email/compose" render={() =>
+                            <EmailList emails={emailsForDisplay}
+                                onRemove={this.onRemove}
+                                onToggleIsRead={this.onToggleIsRead} />} />
                         <Route path="/email/:emailId" render={() =>
                             <EmailDetails onBack={this.onCloseMail}
-                            onRemove={this.onRemove} />} />
+                                onRemove={this.onRemove}
+                                onToggleIsRead={this.onToggleIsRead}
+                                onReply={this.onReply} />} />
                         <Route path="/email" render={() => <EmailList emails={emailsForDisplay}
                             onRemove={this.onRemove} onToggleIsRead={this.onToggleIsRead} />} />
                     </Switch>

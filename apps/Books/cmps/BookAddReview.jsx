@@ -26,7 +26,7 @@ export class AddReview extends React.Component {
 
     render() {
         return (
-            <section className="book-review mrg-start">
+            <section className="book-review mrg-start shadow">
                 <h2 className="mrg-bottom">Review Book</h2>
 
                 <form className="mrg-bottom" onSubmit={this.onSaveReview}>

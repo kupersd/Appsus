@@ -10,7 +10,7 @@ export function About() {
             <div className="founders flex space-around">
                 <div className="founder">
                     <div className="round">
-                        <img src="/assets/img/ori.png" alt=""/>
+                        <img src="assets/img/Ori.png" alt=""/>
                      </div>
                      <div className="founder-details">
                         <h2>Ori Weinstock</h2>
@@ -22,7 +22,7 @@ export function About() {
                 </div>
                 <div className="founder">
                     <div className="round">
-                        <img src="/assets/img/dudi.png" alt=""/>
+                        <img src="assets/img/Dudi.png" alt=""/>
                      </div>
                     <div className="founder-details">
                         <h2>Dudi Kuperstein</h2>

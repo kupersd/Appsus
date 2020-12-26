@@ -1,7 +1,7 @@
 import { bookService } from '../services/books-service.js'
-import { BookList } from '../cmps/book-list.jsx'
-import { BookFilter } from '../cmps/book-filter.jsx'
-import { BookDetails } from '../cmps/book-details.jsx'
+import { BookList } from '../cmps/BookList.jsx'
+import { BookFilter } from '../cmps/BookFilter.jsx'
+import { BookDetails } from '../cmps/BookDetails.jsx'
 
 
 export class BooksList extends React.Component {

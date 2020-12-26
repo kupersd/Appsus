@@ -21,6 +21,7 @@
     border-radius: 50%;
     border: 2px solid var(--bold-color);
     overflow: hidden;
+    margin: auto;
 }
 
 .round img {

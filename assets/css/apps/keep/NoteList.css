@@ -1,9 +1,9 @@
 .keep-app {
-    color: rgb(47, 47, 47);
+    color: var(--primary-color);
 }
 .keep-header {
     padding: 15px;
-    background-color: lightgrey;
+    /* background-color: lightgrey; */
     display: grid;
     grid-template-columns: 30vw 1fr;
     
@@ -77,7 +77,7 @@
 .note-img, 
 .note-todos{
     padding: 10px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     background-color: rgb(20, 155, 20);
     font-size: 1.5em;
 }
@@ -147,7 +147,7 @@
     margin: 5px auto;
     max-width: 70vw;
     padding: 10px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     background-color: #fff;
 }
 
@@ -160,12 +160,13 @@
 }
 .keep-filter input,select{
     border: none;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     height: 50px;
     font-size: 1.2rem;  
     font-weight: 700;
     color: rgb(47, 47, 47);
 }
+
 .note-add button {
     height: 40px;
     margin-inline-start: 30px;
@@ -222,7 +223,7 @@
 
 @media (max-width: 850px) {
     .note-add {
-        flex-direction: column;
+        /* flex-direction: column; */
     }
     .note-add > input {
         text-align: center;

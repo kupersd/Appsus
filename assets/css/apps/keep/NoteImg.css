@@ -1,6 +1,7 @@
 .note-img {
     background-color: rgb(230, 211, 211);
 }
-.note-img > img:first-child {
+
+.note-img>img:first-child {
     width: 100%;
 }

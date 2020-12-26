@@ -2,11 +2,12 @@
     margin: 0 auto;
     width: 300px;
 }
-.keep-filter input,select{
+
+.keep-filter input, select {
     border: none;
     /* border-radius: 10px; */
     height: 50px;
-    font-size: 1.2rem;  
+    font-size: 1.2rem;
     font-weight: 700;
     color: rgb(47, 47, 47);
 }

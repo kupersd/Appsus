@@ -15,15 +15,15 @@ export class _NoteAdd extends React.Component {
         this.refInput.current.focus();
         const emailText = this.saveEmailAsNote()
         if (emailText) {
-            const {note} = this.state
-            note.info = {text: emailText.title + '\n' + emailText.body}
+            const { note } = this.state
+            note.info = { text: emailText.title + '-----' + emailText.body }
             const inputText = '-'
-            this.setState({note, inputText }, this.onSaveNote)
+            this.setState({ note, inputText }, this.onSaveNote)
         }
 
     }
 
-    saveEmailAsNote () {
+    saveEmailAsNote() {
         const urlParams = new URLSearchParams(this.props.location.search);
         console.log(urlParams)
         const title = urlParams.get('title');
@@ -34,11 +34,11 @@ export class _NoteAdd extends React.Component {
     onSaveNote = (ev) => {//on submit
         if (ev) ev.preventDefault();
         const { note } = this.state
-        console.log(' note' , note)
+        console.log(' note', note)
 
         if (!this.state.inputText) {
             // TODO: SWAL
-            return 
+            return
         }
         if (note.type === 'noteVideo') {
             note.info.url = note.info.url.replace('watch?v=', 'embed/');
@@ -47,7 +47,8 @@ export class _NoteAdd extends React.Component {
             .then(savedNote => {
                 console.log('Saved succesfully', savedNote);
                 this.props.showAddedNote()
-                this.setState({ note: { type: note.type, info: {} }, inputText: '' })
+                this.setState({ note: { type: note.type, info: {} }, inputText: '' }, () => { this.props.history.push('/keep') })
+
             })
 
     };

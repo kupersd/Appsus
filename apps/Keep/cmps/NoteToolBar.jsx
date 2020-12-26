@@ -5,8 +5,8 @@ export function NoteToolBar({ noteId, onPin, onSetBgc, onCopy, onDelete }) {
         <div className="colors">
             <img onClick={() => { onSetBgc(noteId) }} src="apps/Keep/assets/img/color-picker.png" />
             <div className="color-picker flex">
-                {colors.map( (color, idx) => 
-                <div key={idx} className={`${color} pointer`} onClick={() => { onSetBgc(noteId, color) }}></div>)}            
+                {colors.map((color, idx) =>
+                    <div key={idx} className={`${color} pointer`} onClick={() => { onSetBgc(noteId, color) }}></div>)}
             </div>
         </div>
         <img onClick={() => { onCopy(noteId) }} src="apps/Keep/assets/img/copy.png" />

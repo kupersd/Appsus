@@ -2,13 +2,6 @@
     column-count: 3;
     column-span: all;
 }
-/* TODO: Delete */
-.note-container {
-    /* background-color: rgb(187, 143, 143); */
-    margin-inline-end: 20px;
-    padding: 10px;
-    margin-bottom: 20px;
-}
 
 .note {
     position: relative;
@@ -18,25 +11,22 @@
     display: inline-block;
     padding: 10px;
 }
-.note > img {
+
+.note>img {
     position: absolute;
     top: 0px;
     right: 5px;
     width: 25px;
     filter: brightness(45%);
 }
-.note-text,
-.note-video, 
-.note-img, 
-.note-todos{
+
+.note-text, .note-video, .note-img, .note-todos {
     padding: 10px;
     background-color: rgb(20, 155, 20);
     font-size: 1.5em;
 }
-.note-text img, 
-.note-img > img:not(:first-child), 
-.note-video img, 
-.note-todos img {
+
+.note-text img, .note-img>img:not(:first-child), .note-video img, .note-todos img {
     height: 30px;
     filter: brightness(50%);
 }

@@ -2,29 +2,30 @@
     margin: 5px auto;
     max-width: 70vw;
     padding: 10px;
-    /* border-radius: 10px; */
     background-color: #fff;
 }
 
-.note-add input{
+.note-add input {
     flex-grow: 1;
     height: 50px;
-    font-size: 1.5rem;  
+    font-size: 1.5rem;
     font-weight: 700;
     color: rgb(47, 47, 47);
 }
+
 .note-add button {
     height: 40px;
     margin-inline-start: 30px;
     margin-block-start: 10px;
     background-color: #fff;
-  
 }
+
 .note-add img:hover {
     filter: brightness(50%);
 }
+
 .note-add img {
     height: 100%;
-    width: unset;  
+    width: unset;
     transition: 0.3s;
 }

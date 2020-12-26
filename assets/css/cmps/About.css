@@ -4,7 +4,9 @@
 }
 
 .about-page p {
-    margin-inline-start: 20px;
+    margin: 0 20px;
+    color: var(--primary-color);
+    line-height: 1.7rem;
 }
 .founders {
     margin: 0 auto;
@@ -15,9 +17,11 @@
 }
 
 .round {
-    background-color: var(--alt-color2);
     width: 25vw;
     height: 25vw;
+    max-width: 300px;
+    max-height: 300px;
+    background-color: var(--alt-color2);
     border-radius: 50%;
     border: 2px solid var(--bold-color);
     overflow: hidden;
@@ -28,4 +32,25 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+    transition: .5s;
+}
+
+.round img:hover{
+    filter:brightness(85%);
+}
+
+@media (max-width: 600px) {
+    .about-top {
+        flex-direction: column;
+    }
+    .founders {
+        flex-direction: column;
+    }
+    .founder {
+        margin-bottom: 20px;
+    }
+    .round {
+        width: 50vw;
+        height: 50vw;
+    }
 }

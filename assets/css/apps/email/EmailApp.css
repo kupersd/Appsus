@@ -24,6 +24,9 @@
 }
 @media (max-width: 600px) {
 
+    .app-header nav li {
+        font-size: 1.1rem;
+    }
     .email-details .email-details-top button {
         font-size: 0.8em;
         padding: 5px 8px;

@@ -27,12 +27,13 @@ export class _EmailCompose extends React.Component {
     }
 
     fillReplyToMail = (replyEmail) => {
-        console.log(replyEmail)
         const email = {
             to: replyEmail.from,
             from: 'ori',
             subject: 'RE: ' + replyEmail.subject,
-            body: 'Here is my answer'
+            body: `----------------------------
+                    ${replyEmail.body}
+                    ------------------------------`
         }
         this.setState({ email });
     }
@@ -72,7 +73,7 @@ export class _EmailCompose extends React.Component {
                     <input value={this.state.email.subject || ''}
                         placeholder="Subject" type="text"
                         name="subject" onChange={this.onInputChange} />
-                    <textarea value={this.state.email.textarea || ''}
+                    <textarea value={this.state.email.body}
                         placeholder="Message..." rows="14" cols="90"
                         name="body" onChange={this.onInputChange}>
                     </textarea>

@@ -71,14 +71,18 @@ export class EmailApp extends React.Component {
 
     toggleMenu = () => {
         console.log('toggeling menu');
-        const toggleBool = !this.state.isMenuOpen
-        this.setState({ isMenuOpen: toggleBool })
+        const toggleBool = !this.state.isMenuOpen;
+        this.setState({ isMenuOpen: toggleBool });
     }
 
     onUnread = () => {
         const filterCopy = { ...this.state.filterBy };
         filterCopy.isUnread = true;
         this.setState({ filterBy: filterCopy })
+    }
+
+    onToNote = (email) => {
+        this.props.history.push(`/keep/?title=${email.subject}&body=${email.body}`);
     }
 
     get emailsForDisplay() {
@@ -106,9 +110,9 @@ export class EmailApp extends React.Component {
         return emailsToShow;
     }
 
-    
+
     render() {
-        const emailsForDisplay =(this.state.filterBy.isUnread) ? this.unreadMails : this.emailsForDisplay;
+        const emailsForDisplay = (this.state.filterBy.isUnread) ? this.unreadMails : this.emailsForDisplay;
         const { isMenuOpen } = this.state
         const isMenuOpenClass = (isMenuOpen) ? 'menu-open' : '';
 
@@ -122,12 +126,13 @@ export class EmailApp extends React.Component {
                         unreadCount={this.state.unreadCount}
                         currMailBox={this.state.filterBy.currMailBox} />
                     <Switch>
-                        
+
                         <Route path="/email/:emailId/compose" render={() =>
                             <EmailDetails onBack={this.onCloseMail}
                                 onRemove={this.onRemove}
                                 onToggleIsRead={this.onToggleIsRead}
-                                onReply={this.onReply} />} />
+                                onReply={this.onReply}
+                                onToNote={this.onToNote} />} />
                         <Route path="/email/compose" render={() =>
                             <EmailList emails={emailsForDisplay}
                                 onRemove={this.onRemove}
@@ -137,16 +142,17 @@ export class EmailApp extends React.Component {
                             <EmailDetails onBack={this.onCloseMail}
                                 onRemove={this.onRemove}
                                 onToggleIsRead={this.onToggleIsRead}
-                                onReply={this.onReply} />} />
+                                onReply={this.onReply}
+                                onToNote={this.onToNote} />} />
                         <Route path="/email" render={() => <EmailList emails={emailsForDisplay}
                             onRemove={this.onRemove}
                             onToggleIsRead={this.onToggleIsRead}
-                            onUnread={this.onUnread}/>} />
+                            onUnread={this.onUnread} />} />
                     </Switch>
                     <Route path="/email/compose" render={() => <EmailCompose onSend={this.onSent}
                         onCancel={this.onSent} />} />
                     <Route path="/email/:emailId/reply" render={() =>
-                            <EmailCompose onSend={this.onSent} onCancel={this.onSent}/> } />
+                        <EmailCompose onSend={this.onSent} onCancel={this.onSent} />} />
                     {this.state.isCompose && <EmailCompose onSend={this.onSent} onCancel={this.onSent} />}
                 </div>
             </section>

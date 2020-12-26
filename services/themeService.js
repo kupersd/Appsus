@@ -1,21 +1,12 @@
 export const themeService = {
-    getTheme,
     setTheme
-}
-
-window.theme = setTheme;
-
-function getTheme(i) {
-    return themes[i];
 }
 
 function setTheme(i) {
     let theme = themes[i];
     for (let key in theme) {
-        console.log(key, theme[key]);
         document.documentElement.style.setProperty(key, theme[key]);
     }
-
 }
 
 const themes = [

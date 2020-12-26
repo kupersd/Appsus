@@ -24,7 +24,7 @@ export class BookFilter extends React.Component {
                 value={this.state.title}
                 placeholder="filter"
                 onChange={this.handleChange} />
-            <label>Min. Price:</label>
+            <label className="mrg-start">Min. Price:</label>
             <input type="range" name="price"
                 min="0" max="200"
                 value={this.state.price}

@@ -36,8 +36,8 @@ V color pallete
 V CSS pre exceeds page
 V hamburger
 V fixed auto read on details
-- focus on compose
-- REPLY!
+V focus on compose
+V REPLY!
 - Fix mailboxes (unread to section in inbox, dynamic <li> render)
 - URL Parameters
 - Export to note button
@@ -57,7 +57,9 @@ V fix dudi's Design
 
 FINAL TOUCH
 =============
-UNREAD button
-Favicon
-founders limit width
-books ?
+V UNREAD button
+V Finish reply Text!!
+V Favicon
+V founders limit width
+V books
+- HEADER MOBILE

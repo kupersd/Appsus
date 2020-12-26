@@ -36,7 +36,7 @@ class _AppHeader extends React.Component {
                     <li><NavLink to="/books">Books</NavLink></li>
                     <li><NavLink to="/email">Mail</NavLink></li>
                     <li><NavLink to="/keep">Keep</NavLink></li>
-                <li><button onClick={() => this.changeTheme(0)}>🌈</button></li>
+                <li><button className="rainbow" onClick={() => this.changeTheme(0)}>🌈</button></li>
                 </ul>
                 <div className="">
                     <h1>Appsus. by Ori &amp;&amp; Dudi</h1>

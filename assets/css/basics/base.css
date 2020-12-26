@@ -1,19 +1,5 @@
-html, body, div, header, h1 {
-    margin: 0;
-    padding: 0;
-}
 :root {
-    /* --primary-color: rgb(47, 79, 79);
-    --secondary-color: rgb(245, 222, 179); */
     --inline-margin: 20px;
-
-    /* THEME #1 */
-    --primary-color: #4F4846;
-    --secondary-color: #FDF8F5;
-    --bold-color: #266150;
-    --bold-color-hover: #144436;
-    --alt-color1: #E8CEBF;
-    --alt-color2: #DDAF94;
 
     /* THEME #2 */
     --primary-color: #3C403D;
@@ -22,15 +8,13 @@ html, body, div, header, h1 {
     --bold-color-hover: #224726;
     --alt-color1: #DADED4;
     --alt-color2: #A3BCB6;
-
-    /* THEME #3 */
-    /* --primary-color: #8E8D8A;
-    --secondary-color: #EAE7DC;
-    --bold-color: #E85A4F;
-    --bold-color-hover: #bd3c33;
-    --alt-color1: #D8C3A5;
-    --alt-color2: #E98074; */
 }
+
+html, body, div, header, h1 {
+    margin: 0;
+    padding: 0;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -39,16 +23,18 @@ html, body, div, header, h1 {
     position: relative;
     min-height: 100vh;
 }
+
 .main-layout {
     max-width: 1000px;
     min-width: 300px;
     margin: 0 auto;
 }
+
 .app {
     padding-bottom: 130px;
 }
+
 body {
-    margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--alt-color1);
 }
@@ -63,7 +49,7 @@ a {
     text-decoration: none;
 }
 
-.debug *{
+.debug * {
     outline: 1px solid orange;
 }
 
@@ -73,10 +59,6 @@ a {
 
 .center {
     text-align: center;
-}
-
-.user-msg {
-    background-color: gray;
 }
 
 /* HELPERS */

@@ -5,9 +5,11 @@ export function EmailList({ emails, onRemove, onToggleIsRead, onUnread }) {
 
     return (
         <section className="email-list shadow fit-content">
-            <div className="emails-list-top">
+            <div className="emails-list-top flex space-between">
                 <h5>Messages</h5>
-                <button onClick={onUnread}>Unread</button>
+                <button className="bold" onClick={onUnread}
+                    title="Inbox unread">
+                    Unread</button>
             </div>
             <div className="emails-list-row">
                 {emails.map(email => {

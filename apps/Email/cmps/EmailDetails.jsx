@@ -10,7 +10,6 @@ class _EmailDetails extends React.Component {
 
     componentDidMount() {
         this.loadEmail();
-        console.log(this.props);
     }
 
     componentDidUpdate(prevProps) {
@@ -22,7 +21,7 @@ class _EmailDetails extends React.Component {
         const { emailId } = this.props.match.params;
         emailService.getById(emailId).then(email => this.setState({ email }))
             .then(this.props.onToggleIsRead(null, emailId, true));
-                                                    //true: set as read, not toggle
+        //null: ev is there, true: set as read, not toggle
     }
 
     onPrevEmail = () => {
@@ -50,7 +49,10 @@ class _EmailDetails extends React.Component {
                         <button onClick={this.onNextEmail}>Next</button>
                         <button onClick={(ev) => { this.props.onRemove(ev, email.id) }}>Delete</button>
                     </div>
-                    <button onClick={() => { this.props.onReply(email) }}>Reply</button>
+                    <div>
+                        <button onClick={() => { this.props.onToNote(email) }}>➡ Note</button>
+                        <button onClick={() => { this.props.onReply(email) }}>Reply</button>
+                    </div>
                 </div>
                 <div className="flex space-between">
                     <div className="to-from">

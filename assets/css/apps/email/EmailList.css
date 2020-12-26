@@ -8,3 +8,11 @@
     color: var(--primary-color);
     margin: 0 ;
 }
+
+.email-list button {
+    color: var(--secondary-color);
+    background-color: var(--bold-color);
+}
+.email-list button:hover {
+    background-color: var(--bold-color-hover);
+}

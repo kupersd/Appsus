@@ -27,9 +27,10 @@ function query() {
 }
 
 function getById(emailId) {
-    const email = gEmails.find(email => email.id == emailId);       // TODO fix string/int
+    const email = gEmails.find(email => email.id === emailId);
     return Promise.resolve(email);
 }
+
 function getNextPrev(emailId) {
     const currIdx = gEmails.findIndex(email => email.id === emailId);
     const nextIdx = (currIdx === gEmails.length - 1) ? 0 : currIdx + 1;
@@ -79,10 +80,8 @@ function myMail() {
     return Promise.resolve(MY_MAIL);
 }
 
-// to controller
 function toWhichFolders(email) {
     let mailBox ;
-    // if (email.to === MY_MAIL && !email.isRead) mailBox = 'unread';
     if (email.to === MY_MAIL) mailBox = 'inbox';
     if (email.from === MY_MAIL && email.to.length > 3) mailBox = 'sent';
     if (email.from === MY_MAIL && email.to.length <= 3) mailBox = 'drafts';

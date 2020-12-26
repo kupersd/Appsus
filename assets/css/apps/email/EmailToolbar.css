@@ -3,14 +3,17 @@
     font-weight: bold;
     padding: 15px;
 }
+
 .email-toolbar .active {
     background-color: var(--bold-color);
     color: var(--secondary-color);
 }
+
 .email-toolbar li:hover {
     background-color: var(--bold-color);
     color: var(--secondary-color);
 }
+
 .email-toolbar button {
     margin-inline-start: 0;
     padding-inline-start: 5px;
@@ -18,19 +21,23 @@
     font-size: 1.2rem;
     font-weight: bold;
 }
+
 .email-toolbar li {
     margin: 5px;
     padding: 5px;
     cursor: pointer;
 }
+
 .email-toolbar button {
     padding: 10px 17px 5px 5px;
     margin-inline-start: 5px;
 }
+
 .email-toolbar button:hover {
     background-color: var(--bold-color);
     color: var(--secondary-color);
 }
+
 .read {
     color: #999;
 }

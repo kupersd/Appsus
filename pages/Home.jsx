@@ -1,5 +1,4 @@
-import { eventBusService } from "../services/eventBusService.js";
-const { Link, withRouter } = ReactRouterDOM;
+const { Link } = ReactRouterDOM;
 
 export function Home() {
     return (
@@ -27,7 +26,7 @@ export function Home() {
                         </div>
                     </div>
                 </Link>
-                <Link to="/email">
+                <Link to="/books">
                     <div className="founder">
                         <div className="round">
                             <img src="assets/img/books.png" alt="" />
@@ -41,7 +40,7 @@ export function Home() {
                         </div>
                     </div>
                 </Link>
-                <Link to="/leep">
+                <Link to="/keep">
                     <div className="founder">
                         <div className="round">
                             <img src="assets/img/note.png" alt="" />

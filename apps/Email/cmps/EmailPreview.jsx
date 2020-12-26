@@ -1,4 +1,4 @@
-const { NavLink, Link } = ReactRouterDOM;
+const { Link } = ReactRouterDOM;
 
 export function EmailPreview({ email, onRemove, onToggleIsRead }) {
     const isReadClass = (email.isRead) ? 'read' : '';

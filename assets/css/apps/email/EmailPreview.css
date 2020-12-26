@@ -6,49 +6,57 @@
     border-bottom: 1px solid rgb(177, 177, 177);
     font-size: 0.8rem;
 }
+
 .email-preview:hover {
     background-color: var(--alt-color2);
 }
+
 .email-preview .from {
     display: inline-block;
     width: 140px;
 }
+
 .email-preview .subj-snip {
-    /* background-color: rgb(161, 76, 76); */
     display: flex;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .email-preview .subj-snip > div {
     margin-inline-end: 10px;
 }
-.email-preview .snippet {
-    /* font-size: 0.85em; */
-}
+
 .email-preview .buttons {
-margin-inline-start: -10px;
+    margin-inline-start: -10px;
 }
+
 .email-preview .icon {
     width: 22px;
 }
+
 .email-preview i {
     padding: 3px;
     border-radius: 50%;
 }
+
 .email-preview i:hover {
     background-color: var(--secondary-color);
 }
+
 .email-preview .right-side {
     margin-inline-start: 20px;
     position: relative;
 }
+
 .email-preview:hover .hideable {
     opacity: 1;
 }
+
 .email-preview:hover .date-time {
     opacity: 0;
 }
+
 .email-preview .hideable {
     position: absolute;
     top: -6px;

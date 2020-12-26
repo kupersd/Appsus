@@ -13,6 +13,7 @@
     color: var(--secondary-color);
     background-color: var(--bold-color);
 }
+
 .email-list button:hover {
     background-color: var(--bold-color-hover);
 }

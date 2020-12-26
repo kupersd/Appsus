@@ -10,8 +10,7 @@ export class _EmailCompose extends React.Component {
             cc: '',
             subject: '',
             body: ''
-        },
-        isReply: false
+        }
     }
 
     refInput = React.createRef();

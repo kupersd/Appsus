@@ -110,7 +110,6 @@ export class EmailApp extends React.Component {
         return emailsToShow;
     }
 
-
     render() {
         const emailsForDisplay = (this.state.filterBy.isUnread) ? this.unreadMails : this.emailsForDisplay;
         const { isMenuOpen } = this.state

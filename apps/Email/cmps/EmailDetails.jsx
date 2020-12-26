@@ -21,7 +21,6 @@ class _EmailDetails extends React.Component {
         const { emailId } = this.props.match.params;
         emailService.getById(emailId).then(email => this.setState({ email }))
             .then(this.props.onToggleIsRead(null, emailId, true));
-        //null: ev is there, true: set as read, not toggle
     }
 
     onPrevEmail = () => {

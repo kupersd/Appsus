@@ -3,7 +3,6 @@ export class EmailSearch extends React.Component {
     state = {
         filterBy: {
             mailText: '',
-            // mailBox: 'all'
         }
     }
 
@@ -24,7 +23,6 @@ export class EmailSearch extends React.Component {
                 value={this.state.filterBy.mailText}
                 placeholder="Search mail..."
                 onChange={this.handleChange} />
-
         </section>
     }
 }

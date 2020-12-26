@@ -38,12 +38,10 @@ V hamburger
 V fixed auto read on details
 V focus on compose
 V REPLY!
-- Fix mailboxes (unread to section in inbox, dynamic <li> render)
+V Fix mailboxes (unread to section in inbox, dynamic <li> render)
+V Export to note button
 - URL Parameters
-- Export to note button
 - 'Screen' for darken bg / click to toggle
-
-Q's to Alon:
 
 V Unread
 V REPLY
@@ -52,9 +50,6 @@ V toggle theme
 V books image preview on list
 V cap css components
 
-V fix dudi's Design
-
-
 FINAL TOUCH
 =============
 V UNREAD button
@@ -62,4 +57,4 @@ V Finish reply Text!!
 V Favicon
 V founders limit width
 V books
-- HEADER MOBILE
+V HEADER MOBILE

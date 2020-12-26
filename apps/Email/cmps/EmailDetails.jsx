@@ -40,7 +40,7 @@ class _EmailDetails extends React.Component {
         const strDateTime = moment(email.sentAt).format(' MMMM Do YYYY, h:mm a')
 
         return (
-            <article className="email-details">
+            <article className="email-details shadow">
                 <div className="email-details-top flex space-between fast-trans">
                     <div>
                         <button onClick={this.props.onBack}>Back</button>

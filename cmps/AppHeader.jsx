@@ -25,8 +25,8 @@ class _AppHeader extends React.Component {
     render() {
         const {msg} = this.state; 
         return <header className="app-header">
-            <nav className="flex space-between align-center">
-                <ul>
+            <nav className="flex space-between align-center main-layout">
+                <ul className="">
                     <li><NavLink exact to="/">Home</NavLink></li>
                     <li><NavLink to="/about">About</NavLink></li>
                     <li><NavLink to="/books">Books</NavLink></li>
@@ -37,9 +37,9 @@ class _AppHeader extends React.Component {
                     <h1>Appsus. by Ori &amp;&amp; Dudi</h1>
                 </div>
             </nav>
-            {msg && <div className="user-msg">
+            {/* {msg && <div className="user-msg">
                 {msg}
-            </div>}
+            </div>} */}
         </header>
     }
 }

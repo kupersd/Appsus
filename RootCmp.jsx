@@ -14,15 +14,18 @@ export class RootCmp extends React.Component {
     render() {
         return (
             <Router>
+                <section className="page-container">
+
                     <AppHeader />
-                <section className="app main-layout">
-                    <Switch>
-                        <Route path="/books" component={BooksApp} />
-                        <Route path="/keep" component={KeepApp} />
-                        <Route path="/email" component={EmailApp} />
-                        <Route path="/about" component={About} />
-                        <Route path="/" component={Home} />
-                    </Switch>
+                    <section className="app main-layout">
+                        <Switch>
+                            <Route path="/books" component={BooksApp} />
+                            <Route path="/keep" component={KeepApp} />
+                            <Route path="/email" component={EmailApp} />
+                            <Route path="/about" component={About} />
+                            <Route path="/" component={Home} />
+                        </Switch>
+                    </section>
                     <AppFooter />
                 </section>
             </Router>

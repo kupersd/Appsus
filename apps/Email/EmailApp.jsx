@@ -16,7 +16,8 @@ export class EmailApp extends React.Component {
         isCompose: false,
         filterBy: {
             mailText: '',
-            currMailBox: 'inbox'
+            currMailBox: 'inbox',
+            isRead: false
         }
     }
 
@@ -31,18 +32,12 @@ export class EmailApp extends React.Component {
         emailService.unreadCount().then(count => this.setState({ unreadCount: count }));
     }
 
-    onSetFilter = (mailText) => {   // change to search
+    onSetFilter = (key, value) => {
+        console.log(key, value)
         const filterCopy = { ...this.state.filterBy };
-        filterCopy.mailText = mailText;
+        filterCopy[key] = value;
         this.setState({ filterBy: filterCopy })
     }
-
-    onSetMailbox = (mailBox) => {
-        const filterCopy = { ...this.state.filterBy };  // could combine both?
-        filterCopy.currMailBox = mailBox;
-        this.setState({ filterBy: filterCopy })
-    }
-
     onCompose = () => {
         this.setState({ isCompose: true });
     }
@@ -52,8 +47,10 @@ export class EmailApp extends React.Component {
         this.loadEmails();
     }
 
-    onRemove = (emailId) => {
+    onRemove = (ev, emailId) => {
+        ev.preventDefault();
         emailService.remove(emailId).then(this.loadEmails);
+        this.props.history.push('/email');
     }
 
     onToggleIsRead = (ev, emailId) => {
@@ -69,34 +66,38 @@ export class EmailApp extends React.Component {
 
         const { filterBy } = this.state;
         const filterRegex = new RegExp(filterBy.mailText, 'i');
-        return this.state.emails.filter(email => {
+
+        const emailsToShow = this.state.emails.filter(email => {
             return ((filterRegex.test(email.body) || filterRegex.test(email.subject)) &&
                 ((emailService.toWhichFolders(email) === this.state.filterBy.currMailBox) ||
                     this.state.filterBy.currMailBox === 'all'))
         });
+
+        emailsToShow.sort((email1, email2) => email2.sentAt - email1.sentAt)
+        return emailsToShow;
     }
 
     render() {
         const emailsForDisplay = this.emailsForDisplay;
         return (
             <section className="email-app">
-                <h3 className="my-account">{this.state.myMail}</h3>
-                <EmailSearch setFilter={this.onSetFilter} />
+                <EmailSearch setFilter2={this.onSetFilter} />
                 <div className="email-main">
                     <EmailToolbar onCompose={this.onCompose}
                         onSetMailbox={this.onSetMailbox}
+                        onSetFilter={this.onSetFilter}
                         unreadCount={this.state.unreadCount}
                         currMailBox={this.state.filterBy.currMailBox} />
                     <Switch>
                         <Route path="/email/:emailId/compose" render={() =>
                             <EmailDetails onBack={this.onCloseMail}
-                                onRemove={this.onRemove} />} />
+                            onRemove={this.onRemove} />} />
                         <Route path="/email/compose" render={() => <EmailList emails={emailsForDisplay}
                             onRemove={this.onRemove} onToggleIsRead={this.onToggleIsRead} />} />
 
                         <Route path="/email/:emailId" render={() =>
                             <EmailDetails onBack={this.onCloseMail}
-                                onRemove={this.onRemove} />} />
+                            onRemove={this.onRemove} />} />
                         <Route path="/email" render={() => <EmailList emails={emailsForDisplay}
                             onRemove={this.onRemove} onToggleIsRead={this.onToggleIsRead} />} />
                     </Switch>

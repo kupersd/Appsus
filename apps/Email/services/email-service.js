@@ -336,6 +336,37 @@ function _getDemoEmails() {
             isRead: false,
             sentAt: 1551467930583
         },
+        {
+            id: '1xo9A',
+            from: 'hello@chess.com',
+            fromName: '♟Chess.com',
+            to: MY_MAIL,
+            cc: '',
+            subject: `Looking for The Perfect Chess Gift This Holiday?`,
+            body: `
+            Access to
+            Unlimited Lessons!
+            They can watch short videos on key concepts and try interactive challenges created by chess masters.
+            Full Access to
+            Analysis Tools!
+            They’ll be able to review their games, see where the game was won or lost, and retry positions with mistakes to improve fast.`,
+            isRead: true,
+            sentAt: 1551467930583
+        },
+        {
+            id: '1ZZ9A',
+            from: '',
+            fromName: '',
+            to: '',
+            cc: '',
+            subject: `לגבי הקורס`,
+            body: `שאלות:
+            טכני -- 
+            - האם התרגול בעצם יהיה קצר בהתחלה כי יש המון רקע- הבוקר קשיח?- אם ימשך החופש מהגן, ידחה? ישתנה?
+            - חלק א' - ב'`,
+            isRead: true,
+            sentAt: 0
+        },
 
 
     ];

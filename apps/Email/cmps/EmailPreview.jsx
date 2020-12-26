@@ -18,7 +18,7 @@ export function EmailPreview({ email, onRemove, onToggleIsRead }) {
                         <i className="pointer fast-trans" onClick={(ev) => onToggleIsRead(ev, email.id)}>
                             <img src={`apps/Email/assets/icons/${isReadIcon}.png`} alt="" className="icon" />
                         </i>
-                        <i className="pointer" onClick={() => onRemove(email.id)}>
+                        <i className="pointer" onClick={(ev) => onRemove(ev, email.id)}>
                             <img src="apps/Email/assets/icons/trash.png" alt="" className="icon" />
                         </i>
                     </div>

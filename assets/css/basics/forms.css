@@ -3,7 +3,6 @@ input {
     border: none;
     outline: none;
     padding: 5px 10px;
-    margin: 2px;
 }
 
 input:focus {

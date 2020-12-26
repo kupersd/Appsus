@@ -9,7 +9,7 @@ export class EmailSearch extends React.Component {
 
     handleChange = (ev) => {
         const callback = () => {
-            this.props.setFilter(this.state.filterBy.mailText);
+            this.props.setFilter2('mailText', this.state.filterBy.mailText);
         };
 
         const filterBy = { ...this.state.filterBy }
@@ -18,7 +18,7 @@ export class EmailSearch extends React.Component {
     }
 
     render() {
-        return <section className="email-search">
+        return <section className="email-search shadow">
             <input type="text" name="mailText"
                 value={this.state.filterBy.mailText}
                 placeholder="Search mail..."

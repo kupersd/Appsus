@@ -19,7 +19,7 @@ export class _EmailToolbar extends React.Component {
 
     setMailbox = (mailBox) => {
         const callback = () => {
-            this.props.onSetMailbox(this.state.filterBy.currMailBox);
+            this.props.onSetFilter('currMailBox', this.state.filterBy.currMailBox);
         }
         this.setState({ filterBy: { currMailBox: mailBox } }, callback);
         this.props.history.push('/email')
@@ -31,8 +31,8 @@ export class _EmailToolbar extends React.Component {
         if (!mailBoxes) return <div>Loading...</div>
 
         return (
-            <section className="email-toolbar">
-                <button onClick={this.props.onCompose}>Compose</button>
+            <section className="email-toolbar shadow fit-content">
+                <button onClick={this.props.onCompose} className="fast-trans">Compose</button>
                 <ul className="clean-list">
 
                     {mailBoxes.map(box => {

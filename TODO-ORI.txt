@@ -28,12 +28,15 @@ V css header
 Day #3
 ========
 V Unread on mail click
-- show date/time on list
+V show date/time on list
+V CSS Email list
+V sort by date
+V main page layout fixes (footer)
+V color pallete
+V CSS pre exceeds page
+- focus on compose
 - REPLY!
-- sort by date
 - Fix mailboxes (unread to section in inbox, dynamic <li> render)
-- CSS pre exceeds page
-- CSS Email list
 - URL Parameters
 - Export to note button
 
@@ -42,3 +45,5 @@ V Unread on mail click
 ALON MEETING Thrusday Evening:
 ================================
 - CSS
+
+Q's to Alon:

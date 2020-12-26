@@ -1,22 +1,19 @@
-.email-app h3 {
-    text-align: right;
-    margin-inline-start: 20px;
-    font-size: 0.8rem;
-    position: absolute;
-    top: 80px;
-}
-
 .email-main {
     display: grid;
     grid-template-columns: 150px 1fr;
-    grid-gap: 10px;
-    margin: 0 10px;
+    grid-gap: 15px;
+    margin: 0 15px;
 }
 .email-search {
     margin: 20px auto;
     width: 50vw;
 }
 .email-search input {
-    height: 30px;
+    height: 36px;
     width: 100%;
+}
+
+.emails-list-top {
+    padding: 10px;
+    font-weight: bold;
 }

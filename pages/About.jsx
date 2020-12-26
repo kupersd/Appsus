@@ -1,5 +1,3 @@
-const { Route, Switch, NavLink } = ReactRouterDOM;
-
 export function About() {
     return (
         <section className="about-page">
@@ -7,7 +5,7 @@ export function About() {
             <p>
                 The story begins in November 2020. While the world is experiencing a unique, once in a century challenge, we have decided to go on a journey and become Coding-Ninjas Duo and conquer the world wide web.
             </p>
-            <p>Our vision is to deliver Class-A products in terms of efficiancy, perfect user experience, superb design and above all - a good spirit. Come and join us - We are hiring!</p>
+            <p>Our vision is to deliver Class-A products in terms of efficiency, perfect user experience, superb design and above all - a good spirit. Come and join us - We are hiring!</p>
             <hr />
             <div className="founders flex space-around">
                 <div className="founder">
@@ -35,12 +33,6 @@ export function About() {
                     </div>
                 </div>
             </div>
-            <nav>
-            </nav>
-
-            <Switch>
-            </Switch>
-
         </section>
     );
 }

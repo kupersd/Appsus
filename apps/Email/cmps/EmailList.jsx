@@ -1,12 +1,13 @@
 import { EmailPreview } from "./EmailPreview.jsx"
 
-export function EmailList({ emails, onRemove, onToggleIsRead }) {
+export function EmailList({ emails, onRemove, onToggleIsRead, onFilterUnread }) {
     if (!emails || emails.length === 0) return <div>No emails to show...</div>;
 
     return (
-        <section className="">
-            <div className="">
-                Place Holder Deluxe (.. tdb: unread section)
+        <section className="shadow fit-content">
+            <div className="emails-list-top">
+                Inbox
+                <button>Unread</button>
             </div>
             <div className="emails-list-row">
                 {emails.map(email => {

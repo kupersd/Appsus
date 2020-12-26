@@ -23,7 +23,14 @@
     padding: 5px;
     cursor: pointer;
 }
-
+.email-toolbar button {
+    padding: 10px 17px 5px 5px;
+    margin-inline-start: 5px;
+}
+.email-toolbar button:hover {
+    background-color: var(--bold-color);
+    color: var(--secondary-color);
+}
 .read {
     color: #999;
 }

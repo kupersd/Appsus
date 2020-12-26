@@ -25,7 +25,6 @@ export class _NoteAdd extends React.Component {
 
     saveEmailAsNote() {
         const urlParams = new URLSearchParams(this.props.location.search);
-        console.log(urlParams)
         const title = urlParams.get('title');
         const body = urlParams.get('body');
         return (title && body) ? { title, body } : null;
@@ -34,7 +33,6 @@ export class _NoteAdd extends React.Component {
     onSaveNote = (ev) => {//on submit
         if (ev) ev.preventDefault();
         const { note } = this.state
-        console.log(' note', note)
 
         if (!this.state.inputText) {
             // TODO: SWAL
@@ -45,7 +43,6 @@ export class _NoteAdd extends React.Component {
         }
         noteService.save(note)
             .then(savedNote => {
-                console.log('Saved succesfully', savedNote);
                 this.props.showAddedNote()
                 this.setState({ note: { type: note.type, info: {} }, inputText: '' }, () => { this.props.history.push('/keep') })
 

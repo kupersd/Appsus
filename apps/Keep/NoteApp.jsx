@@ -14,13 +14,12 @@ export class NoteApp extends React.Component {
     };
 
     componentDidMount() {
-
         this.loadNotes()
-    } 
+    }
 
     loadNotes = () => {
         noteService.query()
-            .then(notes => { console.log(notes); this.setState({ notes }); })
+            .then(notes => { this.setState({ notes }) })
     }
 
     onUpdateNote = (ev, noteId, todoIdx) => {
@@ -108,7 +107,7 @@ export class NoteApp extends React.Component {
                 <header className="keep-header mrg-bottom">
                     <NoteFilter setFilter={this.onSetFilter} />
                 </header>
-                    <NoteAdd showAddedNote={this.loadNotes} />
+                <NoteAdd showAddedNote={this.loadNotes} />
                 {pinnedNotes.length > 0 && <h4>Pinned</h4>}
                 <NoteList notes={pinnedNotes} onTodoDone={this.onTodoDone} onNoteChosen={this.onUpdateNote}
                     onPin={this.onPin} onSetBgc={this.onSetBgc} onCopy={this.onCopy} onDelete={this.onDelete} />

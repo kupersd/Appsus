@@ -33,9 +33,8 @@ V Fix all todos from mutual CR
 V Focus on input. on mount, inline edit
 V Delete code for Edit.....
 V Basic responsivity
-- brightness of icons on bottom of note
+V brightness of icons on bottom of note
 - SWAL if no text
-- Fix bug of presenting pinned.
-- Find UI problems
-- Integrate notes and emails
-- Think of changing that only on finish of editing save to storage
+V Fix bug of presenting pinned.
+V Find UI problems
+V Integrate notes and emails

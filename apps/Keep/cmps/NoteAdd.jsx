@@ -1,7 +1,7 @@
 import { noteService } from "../services/noteService.js";
+const { withRouter } = ReactRouterDOM;
 
-
-export class NoteAdd extends React.Component {
+export class _NoteAdd extends React.Component {
 
     state = {
         note: { type: 'noteText', info: {} },
@@ -13,13 +13,31 @@ export class NoteAdd extends React.Component {
 
     componentDidMount() {
         this.refInput.current.focus();
+        const emailText = this.saveEmailAsNote()
+        if (emailText) {
+            const {note} = this.state
+            note.info = {text: emailText.title + '\n' + emailText.body}
+            const inputText = '-'
+            this.setState({note, inputText }, this.onSaveNote)
+        }
+
+    }
+
+    saveEmailAsNote () {
+        const urlParams = new URLSearchParams(this.props.location.search);
+        console.log(urlParams)
+        const title = urlParams.get('title');
+        const body = urlParams.get('body');
+        return (title && body) ? { title, body } : null;
     }
 
     onSaveNote = (ev) => {//on submit
-        ev.preventDefault();
+        if (ev) ev.preventDefault();
         const { note } = this.state
+        console.log(' note' , note)
+
         if (!this.state.inputText) {
-            // TODO: SWAL?
+            // TODO: SWAL
             return 
         }
         if (note.type === 'noteVideo') {
@@ -96,3 +114,4 @@ export class NoteAdd extends React.Component {
         );
     }
 }
+export const NoteAdd = withRouter(_NoteAdd);

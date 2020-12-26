@@ -105,13 +105,13 @@ export class KeepApp extends React.Component {
         const pinnedNotes = this.getPinned(this.notesForDisplay)
         const unPinnedNotes = this.getUnPinned(this.notesForDisplay)
         return (
-            
+
             <section className="keep-app">
                 <header className="keep-header mrg-bottom">
-                    <h1>Miss Keep</h1>
+                    {/* <h1>Miss Keep</h1> */}
                     <KeepFilter setFilter={this.onSetFilter} />
                 </header>
-                <NoteAdd showAddedNote={this.loadNotes} />
+                    <NoteAdd showAddedNote={this.loadNotes} />
                 {pinnedNotes.length && <h4>Pinned</h4>}
                 <NoteList notes={pinnedNotes} onTodoDone={this.onTodoDone} onNoteChosen={this.onUpdateNote}
                     onPin={this.onPin} onSetBgc={this.onSetBgc} onCopy={this.onCopy} onDelete={this.onDelete} />

@@ -4,8 +4,11 @@
 .keep-header {
     padding: 15px;
     /* background-color: lightgrey; */
-    display: grid;
-    grid-template-columns: 30vw 1fr;
+    /* display: grid;
+    grid-template-columns: 30vw 1fr; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     
 }
 
@@ -158,6 +161,11 @@
     font-weight: 700;
     color: rgb(47, 47, 47);
 }
+
+.keep-filter {
+    margin: 0 auto;
+    width: 300px;
+}
 .keep-filter input,select{
     border: none;
     /* border-radius: 10px; */
@@ -223,7 +231,7 @@
 
 @media (max-width: 850px) {
     .note-add {
-        /* flex-direction: column; */
+        flex-direction: column;
     }
     .note-add > input {
         text-align: center;

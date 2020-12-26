@@ -23,4 +23,12 @@
 @import './apps/email/EmailApp.css';
 
 /* KEEP */
-@import './apps/keep/KeepApp.css';
+@import './apps/keep/NoteText.css';
+@import './apps/keep/NoteImg.css';
+@import './apps/keep/NoteVideo.css';
+@import './apps/keep/NoteTodos.css';
+@import './apps/keep/NoteToolBar.css';
+@import './apps/keep/NoteAdd.css';
+@import './apps/keep/NoteFilter.css';
+@import './apps/keep/NoteList.css';
+@import './apps/keep/NoteApp.css';

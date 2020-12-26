@@ -1,4 +1,4 @@
-import { keepService } from "../services/keepService.js";
+import { noteService } from "../services/noteService.js";
 
 
 export class NoteAdd extends React.Component {
@@ -25,7 +25,7 @@ export class NoteAdd extends React.Component {
         if (note.type === 'noteVideo') {
             note.info.url = note.info.url.replace('watch?v=', 'embed/');
         }
-        keepService.save(note)
+        noteService.save(note)
             .then(savedNote => {
                 console.log('Saved succesfully', savedNote);
                 this.props.showAddedNote()
@@ -80,7 +80,7 @@ export class NoteAdd extends React.Component {
         const { inputText, placeholder, note } = this.state
         return (
             <div>
-                <form className="note-add flex space-between shadow" onSubmit={this.onSaveNote}>
+                <form className="note-add flex space-between shadow mrg-bottom" onSubmit={this.onSaveNote}>
                     <input value={inputText} ref={this.refInput}
                         placeholder={placeholder} type="text" name="inputText"
                         onChange={this.onInputChange} />

@@ -1,12 +1,9 @@
-import { KeepFilter } from "./cmps/KeepFilter.jsx";
+import { NoteFilter } from "./cmps/NoteFilter.jsx";
 import { NoteAdd } from "./cmps/NoteAdd.jsx";
 import { NoteList } from "./cmps/NoteList.jsx";
-import { keepService } from "./services/keepService.js";
+import { noteService } from "./services/noteService.js";
 
-const Router = ReactRouterDOM.HashRouter;
-const { Route, Switch } = ReactRouterDOM;
-
-export class KeepApp extends React.Component {
+export class NoteApp extends React.Component {
 
     state = {
         notes: [],
@@ -21,28 +18,28 @@ export class KeepApp extends React.Component {
     }
 
     loadNotes = () => {
-        keepService.query()
+        noteService.query()
             .then(notes => { console.log(notes); this.setState({ notes }); })
     }
 
     onUpdateNote = (ev, noteId, todoIdx) => {
         if (!ev) return
         const text = ev.target.innerText
-        keepService.getNoteById(noteId)
+        noteService.getNoteById(noteId)
             .then(noteToEdit => {
                 switch (noteToEdit.type) {
                     case 'noteText':
                         noteToEdit.info.text = text;
-                        keepService.save(noteToEdit)
+                        noteService.save(noteToEdit)
                         break
                     case 'noteTodos':
                         noteToEdit.info.todos[todoIdx].text = text;
-                        keepService.save(noteToEdit)
+                        noteService.save(noteToEdit)
                         break;
                     case 'noteImg':
                     case 'noteVideo':
                         noteToEdit.info.title = text;
-                        keepService.save(noteToEdit)
+                        noteService.save(noteToEdit)
                 }
             })
     }
@@ -64,28 +61,28 @@ export class KeepApp extends React.Component {
         });
     }
     onDelete = (noteId) => {
-        keepService.deleteNote(noteId).
+        noteService.deleteNote(noteId).
             then(this.loadNotes())
     }
 
     onPin = (noteId) => {
-        keepService.pinToggle(noteId)
+        noteService.pinToggle(noteId)
             .then(this.loadNotes())
     }
 
     onSetBgc = (noteId, bgc) => {
-        keepService.setBgc(noteId, bgc)
+        noteService.setBgc(noteId, bgc)
             .then(this.loadNotes())
 
     }
 
     onCopy = (noteId) => {
-        keepService.copyNote(noteId)
+        noteService.copyNote(noteId)
             .then(this.loadNotes())
     }
 
     onTodoDone = (noteId, todoIdx) => {
-        keepService.toggleTodo(noteId, todoIdx)
+        noteService.toggleTodo(noteId, todoIdx)
             .then(this.loadNotes())
 
     }
@@ -108,8 +105,7 @@ export class KeepApp extends React.Component {
 
             <section className="keep-app">
                 <header className="keep-header mrg-bottom">
-                    {/* <h1>Miss Keep</h1> */}
-                    <KeepFilter setFilter={this.onSetFilter} />
+                    <NoteFilter setFilter={this.onSetFilter} />
                 </header>
                     <NoteAdd showAddedNote={this.loadNotes} />
                 {pinnedNotes.length && <h4>Pinned</h4>}

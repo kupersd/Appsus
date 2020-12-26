@@ -1,4 +1,4 @@
-export class KeepFilter extends React.Component {
+export class NoteFilter extends React.Component {
 
     state = {
         filterBy: {

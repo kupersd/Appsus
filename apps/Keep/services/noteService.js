@@ -1,7 +1,7 @@
 import { storageService } from "../../../services/storageService.js";
 import { utilService } from "../../../services/utilService.js";
 
-export const keepService = {
+export const noteService = {
     query,
     getNoteById,
     save,
@@ -115,6 +115,7 @@ function _getDemoNotes() {
     const demoNotes = [
         {
             type: 'noteVideo',
+            isPinned: true,
             info: {
                 url: 'https://www.youtube.com/embed/I3qvi4wHNns',
                 title: 'my first Video'

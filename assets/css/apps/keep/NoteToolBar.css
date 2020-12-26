@@ -1,0 +1,77 @@
+.note-tool-bar {
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    padding: 5px;
+    position: absolute;
+    gap: 5px;
+    bottom: 10px;
+    right: 10px;
+    transition: 0.8s;
+    cursor: pointer;
+}
+
+.note-tool-bar img {
+    margin-left: 15px;
+    height: 28px;
+    width: 28px;
+    filter: brightness(80%);
+    cursor: pointer;
+}
+
+.note-tool-bar button {
+    margin-inline-end: 0.5rem;
+}
+.note:hover .note-tool-bar {
+    visibility: visible;
+    opacity: 1;
+}
+.color-picker {
+    position: absolute;
+    z-index: 1;
+    bottom: -20px;
+    right:20px;
+}
+.color-picker > div {
+    display: none;
+    margin-inline-end: 2px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+}
+
+.colors:hover .color-picker > div {
+    display: inline-block;
+}
+.white {
+    background-color: #fff;
+} 
+.lightpink {
+    background-color: lightpink;
+} 
+.lightsalmon{
+    background-color: lightsalmon;
+} 
+.yellow{
+    background-color: yellow;
+} 
+.lightgreen{
+    background-color: lightgreen;
+} 
+.lightblue{
+    background-color: lightblue;
+} 
+.lightskyblue{
+    background-color: lightskyblue;
+} 
+.blue{
+    background-color: blue;
+} 
+.purple{
+    background-color: rgb(158, 47, 149);
+} 
+.lightgray{
+    background-color: lightgray;
+}
+

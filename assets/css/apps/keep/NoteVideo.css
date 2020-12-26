@@ -1,0 +1,7 @@
+.note-video > *:not(:last-child){
+    margin: 0 auto;
+    display: block;
+}
+.note-video {
+    background-color: rgb(230, 211, 211);
+}

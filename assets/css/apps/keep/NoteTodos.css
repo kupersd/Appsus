@@ -1,0 +1,14 @@
+.todo-done {
+    text-decoration: line-through;
+}
+.note-todos p {
+    margin: 0;
+}
+.note-todos > div {
+    border-bottom: 1px dashed gray;
+}
+
+.note-todos > div:last-of-type {
+    border-bottom: 2px dashed gray;
+    margin-bottom: 20px;
+}

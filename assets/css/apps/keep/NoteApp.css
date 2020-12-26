@@ -1,0 +1,79 @@
+.keep-app {
+    color: var(--primary-color);
+}
+.keep-app h4 {
+    margin-bottom: 0;
+    margin-inline-start: 10px;
+    font-size: 1.5em;
+}
+.keep-header {
+    padding: 15px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;   
+}
+.my-active img{
+    filter: brightness(50%);
+}
+.note-todos img.my-active {
+    filter: brightness(40%);
+}
+/* .note-edit {
+    position: absolute;
+    max-width: 30vw;
+    right: 300px;
+    bottom: 100px;
+    background-color: rgb(187, 168, 168);
+    transform: translateX(-300px); */
+    /* transform: translateY(-300px); */
+
+/* } */
+@media (max-width: 950px) {
+    .keep-app h4 {
+        margin-inline-start: 5vw;
+    }
+    .note-add button{
+        margin-inline-start: 15px;
+    }
+    .note-add {
+        max-width: 85vw;
+    }
+    .note-list{
+        max-width: 90vw;
+        column-count: 2;
+        column-gap: 40px;
+        margin: 0 auto;
+    }
+    .note {
+        width: 360px;
+        margin-top: 20px;
+    }
+    .keep-header {
+        display: flex;
+        flex-direction: column;    
+    }
+    .keep-header > section {
+        align-self: center;
+    }
+}
+@media (max-width: 720px) {
+    .note-add{
+        flex-direction: column;
+    }
+    .note-add div {
+        margin: 0 auto;
+    }
+    .note-add input {
+        text-align: center;
+    }
+    .note-list{
+        column-count: unset;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }  
+    .note {
+        width: 400px;
+        margin: 20px 20px;
+    } 
+}

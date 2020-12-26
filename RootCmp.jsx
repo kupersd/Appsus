@@ -1,5 +1,5 @@
 import { BooksApp } from './apps/Books/BooksApp.jsx';
-import { KeepApp } from './apps/Keep/KeepApp.jsx';
+import { NoteApp } from './apps/Keep/NoteApp.jsx';
 import { EmailApp } from './apps/Email/EmailApp.jsx';
 import { AppHeader } from './cmps/AppHeader.jsx';
 import { AppFooter } from './cmps/AppFooter.jsx';
@@ -20,7 +20,7 @@ export class RootCmp extends React.Component {
                     <section className="app main-layout">
                         <Switch>
                             <Route path="/books" component={BooksApp} />
-                            <Route path="/keep" component={KeepApp} />
+                            <Route path="/keep" component={NoteApp} />
                             <Route path="/email" component={EmailApp} />
                             <Route path="/about" component={About} />
                             <Route path="/" component={Home} />

@@ -44,7 +44,7 @@ h2 {
     margin: 10px var(--inline-margin) 5px;
 }
 h4 {
-    margin: 0px var(--inline-margin) 30px;
+    /* margin: 0px var(--inline-margin) 30px; */
 }
 
 input[type="range"] {

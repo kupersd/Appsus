@@ -108,10 +108,10 @@ export class NoteApp extends React.Component {
                     <NoteFilter setFilter={this.onSetFilter} />
                 </header>
                     <NoteAdd showAddedNote={this.loadNotes} />
-                {pinnedNotes.length && <h4>Pinned</h4>}
+                {pinnedNotes.length > 0 && <h4>Pinned</h4>}
                 <NoteList notes={pinnedNotes} onTodoDone={this.onTodoDone} onNoteChosen={this.onUpdateNote}
                     onPin={this.onPin} onSetBgc={this.onSetBgc} onCopy={this.onCopy} onDelete={this.onDelete} />
-                {pinnedNotes.length && <h4>Other Notes</h4>}
+                {pinnedNotes.length > 0 && <h4>Other Notes</h4>}
                 <NoteList notes={unPinnedNotes} onTodoDone={this.onTodoDone} onNoteChosen={this.onUpdateNote}
                     onPin={this.onPin} onSetBgc={this.onSetBgc} onCopy={this.onCopy} onDelete={this.onDelete} />
             </section>

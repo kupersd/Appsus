@@ -1,12 +1,13 @@
 import { EmailPreview } from "./EmailPreview.jsx"
 
-export function EmailList({ emails, onRemove, onToggleIsRead }) {
+export function EmailList({ emails, onRemove, onToggleIsRead, onUnread }) {
     if (!emails || emails.length === 0) return <div>No emails to show...</div>;
 
     return (
         <section className="email-list shadow fit-content">
             <div className="emails-list-top">
                 <h5>Messages</h5>
+                <button onClick={onUnread}>Unread</button>
             </div>
             <div className="emails-list-row">
                 {emails.map(email => {

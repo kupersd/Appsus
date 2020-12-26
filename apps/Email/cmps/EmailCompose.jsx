@@ -14,14 +14,16 @@ export class _EmailCompose extends React.Component {
         isReply: false
     }
 
+    refInput = React.createRef();
+
     componentDidMount() {
-        console.log('onCompose', this.props);
-        const { pathname } = this.props.history.location;
-        const replyToId = pathname.substr(7, 5);
-        if (replyToId.length === 5) {
-            console.log('Replying to mail:', replyToId);
-            emailService.getById(replyToId).then(this.fillReplyToMail)
-        }
+        this.refInput.current.focus();
+
+        const { emailId } = this.props.match.params;
+        if (!emailId) return;
+        emailService.getById(emailId)
+        .then(this.fillReplyToMail);
+        
     }
 
     fillReplyToMail = (replyEmail) => {
@@ -32,9 +34,7 @@ export class _EmailCompose extends React.Component {
             subject: 'RE: ' + replyEmail.subject,
             body: 'Here is my answer'
         }
-        console.log(email)
         this.setState({ email });
-        console.log('state after reply:', this.state)
     }
 
     onInputChange = (ev) => {
@@ -46,7 +46,6 @@ export class _EmailCompose extends React.Component {
     onSendEmail = (ev) => {
         ev.preventDefault();
         emailService.send(this.state.email).then(sentMail => {
-            console.log('email sent:', sentMail);
             this.props.onSend();
         })
     }
@@ -65,7 +64,7 @@ export class _EmailCompose extends React.Component {
                 </div>
                 <form className="compose-form" onSubmit={this.onSendEmail}>
                     <input value={this.state.email.to || ''}
-                        placeholder="To" type="text"
+                        placeholder="To" type="text" ref={this.refInput}
                         name="to" onChange={this.onInputChange} />
                     <input value={this.state.email.cc || ''}
                         placeholder="Cc" type="text"

@@ -4,7 +4,7 @@ import { NoteToolBar } from "./NoteToolBar.jsx";
 export function NoteList({ notes, onNoteChosen, onPin, onSetBgc, onCopy, onDelete, onTodoDone }) {
     if (!notes.length) return <div className="inline"></div>
     return (
-        <ul className="note-list clean-list debug">
+        <ul className="note-list clean-list">
             {notes.map((note, idx) => <li className="note" key={idx}>               
                     <DynamicNoteCmp note={note} onTodoDone={(todoIdx) => { onTodoDone(note.id, todoIdx) }} onNoteChosen={(ev, todoIdx) => {
                         ev.preventDefault(); onNoteChosen(ev, note.id, todoIdx)

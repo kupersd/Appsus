@@ -43,19 +43,21 @@ V fixed auto read on details
 - Export to note button
 - 'Screen' for darken bg / click to toggle
 
-
-
-ALON MEETING Thrusday Evening:
-================================
-- CSS
-
 Q's to Alon:
 
-- Unread
-- REPLY
+V Unread
+V REPLY
 - pass from note 
-- toggle theme
-- books image preview on list
-- cap css components
+V toggle theme
+V books image preview on list
+V cap css components
 
-- fix dudi's Design
+V fix dudi's Design
+
+
+FINAL TOUCH
+=============
+UNREAD button
+Favicon
+founders limit width
+books ?

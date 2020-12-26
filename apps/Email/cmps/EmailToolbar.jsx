@@ -26,7 +26,8 @@ export class _EmailToolbar extends React.Component {
 
     render() {
         const { currMailBox } = this.props;
-        const { mailBoxes } = this.state; 
+        const { mailBoxes } = this.state;
+
         if (!mailBoxes) return <div>Loading...</div>
 
         return (
